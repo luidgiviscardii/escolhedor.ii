@@ -10,35 +10,60 @@ body { font-family: 'Segoe UI', Arial, sans-serif; background: #eef2f8; min-heig
 .tabs { display: flex; background: #1a3a7a; }
 .tab-btn { flex: 1; padding: 14px; color: rgba(255,255,255,0.6); font-size: 13px; font-weight: 600; border: none; background: none; cursor: pointer; border-bottom: 3px solid transparent; transition: all 0.2s; }
 .tab-btn.active { color: #fff; border-bottom-color: #cc2222; }
-.tab-content { display: none; padding: 1.5rem 1rem; max-width: 540px; margin: 0 auto; }
+.tab-content { display: none; padding: 1.25rem 1rem 2rem; max-width: 1100px; margin: 0 auto; }
 .tab-content.active { display: block; }
-.logo { text-align: center; margin-bottom: 1.5rem; }
+#tab-escolhedor.active { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; align-items: start; }
+#tab-escolhedor .col-left { min-width: 0; }
+#tab-escolhedor .col-right { min-width: 0; position: sticky; top: 1rem; }
+@media (max-width: 700px) {
+  #tab-escolhedor.active { display: block; }
+  #tab-escolhedor .col-right { position: static; }
+}
+
+/* LOGO */
+.logo { text-align: center; margin-bottom: 1rem; }
 .logo h1 { font-size: 1.4rem; font-weight: 700; color: #1a3a7a; }
 .logo span { color: #cc2222; }
 .logo p { font-size: 0.75rem; color: #5a6a8a; margin-top: 3px; letter-spacing: 1px; text-transform: uppercase; }
-.card { background: #fff; border-radius: 14px; box-shadow: 0 4px 20px rgba(26,58,122,0.09); padding: 1.5rem; margin-bottom: 1.25rem; }
-.section-title { font-size: 0.68rem; font-weight: 700; color: #1a3a7a; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 0.75rem; }
-.toggle-group { display: flex; gap: 7px; flex-wrap: wrap; }
-.toggle-btn { flex: 1; min-width: 75px; padding: 9px 6px; border: 1.5px solid #d0d8e8; border-radius: 9px; background: #f5f8ff; color: #5a6a8a; font-size: 0.78rem; font-weight: 600; cursor: pointer; text-align: center; transition: all 0.18s; line-height: 1.3; }
+
+/* INSTRUCTIONS */
+.instructions { background: #fff; border-radius: 12px; border-left: 4px solid #1a3a7a; padding: 1rem 1.25rem; margin-bottom: 1.25rem; box-shadow: 0 2px 10px rgba(26,58,122,0.07); }
+.instructions h3 { font-size: 0.72rem; font-weight: 700; color: #1a3a7a; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.6rem; }
+.instructions ol { padding-left: 1.1rem; }
+.instructions li { font-size: 0.8rem; color: #3a4a6a; line-height: 1.6; margin-bottom: 3px; }
+.instructions li strong { color: #1a3a7a; }
+
+/* CARD */
+.card { background: #fff; border-radius: 14px; box-shadow: 0 4px 20px rgba(26,58,122,0.09); padding: 1.25rem; margin-bottom: 1rem; }
+.section-title { font-size: 0.68rem; font-weight: 700; color: #1a3a7a; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 0.65rem; }
+.toggle-group { display: flex; gap: 6px; flex-wrap: wrap; }
+.toggle-btn { flex: 1; min-width: 70px; padding: 8px 6px; border: 1.5px solid #d0d8e8; border-radius: 9px; background: #f5f8ff; color: #5a6a8a; font-size: 0.77rem; font-weight: 600; cursor: pointer; text-align: center; transition: all 0.18s; line-height: 1.3; }
 .toggle-btn.active { background: #1a3a7a; color: #fff; border-color: #1a3a7a; }
 .toggle-btn.active.red { background: #cc2222; border-color: #cc2222; }
-.toggle-btn small { display: block; font-weight: 400; font-size: 0.68rem; opacity: 0.8; margin-top: 2px; }
-.divider { border: none; border-top: 1px solid #eef2f8; margin: 1.25rem 0; }
-.result-box { background: #1a3a7a; border-radius: 13px; padding: 1.25rem; color: #fff; }
-.result-plans { display: grid; gap: 8px; }
-.plan-row { background: rgba(255,255,255,0.1); border-radius: 9px; padding: 10px 13px; }
-.plan-row.best { background: rgba(255,255,255,0.18); border: 1px solid rgba(255,255,255,0.3); }
-.plan-row.warn { background: rgba(204,34,34,0.15); border: 1px solid rgba(204,34,34,0.3); }
-.plan-title { font-size: 0.73rem; font-weight: 700; opacity: 0.85; margin-bottom: 5px; text-transform: uppercase; letter-spacing: 0.4px; }
-.plan-line { font-size: 0.8rem; opacity: 0.9; padding: 1px 0; }
-.plan-line s { opacity: 0.5; font-size: 0.72rem; margin-left: 4px; }
-.best-badge { display: inline-block; background: #cc2222; color: #fff; font-size: 0.62rem; font-weight: 700; padding: 1px 6px; border-radius: 20px; margin-left: 5px; vertical-align: middle; }
-.warn-badge { display: inline-block; background: rgba(204,34,34,0.8); color: #fff; font-size: 0.62rem; font-weight: 700; padding: 1px 6px; border-radius: 20px; margin-left: 5px; vertical-align: middle; }
-.warn-text { font-size: 0.72rem; opacity: 0.85; margin-top: 6px; padding-top: 6px; border-top: 1px solid rgba(255,255,255,0.15); font-style: italic; }
-.msg-preview { background: #f5f8ff; border-radius: 9px; padding: 1rem; font-size: 0.8rem; color: #1a3a7a; white-space: pre-wrap; line-height: 1.65; border: 1.5px solid #d0d8e8; min-height: 60px; }
-.copy-btn { margin-top: 0.75rem; width: 100%; padding: 11px; background: #25D366; color: #fff; border: none; border-radius: 9px; font-size: 0.9rem; font-weight: 700; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 7px; }
+.divider { border: none; border-top: 1px solid #eef2f8; margin: 1rem 0; }
+
+/* CUPOM INPUT */
+#cupom-input-wrap { margin-top: 8px; }
+#cupom-input { width: 100%; padding: 9px 14px; border: 1.5px solid #d0d8e8; border-radius: 9px; font-size: 0.9rem; color: #1a3a7a; background: #f5f8ff; outline: none; }
+#cupom-input:focus { border-color: #1a3a7a; }
+
+/* MSG */
+.msg-preview { background: #f5f8ff; border-radius: 9px; padding: 1rem; font-size: 0.8rem; color: #1a3a7a; white-space: pre-wrap; line-height: 1.65; border: 1.5px solid #d0d8e8; }
+.copy-btn { margin-top: 0.75rem; width: 100%; padding: 13px; background: #25D366; color: #fff; border: none; border-radius: 9px; font-size: 1rem; font-weight: 700; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; }
 .copy-btn:hover { opacity: 0.88; }
 .copied { text-align: center; font-size: 0.78rem; color: #25D366; font-weight: 600; margin-top: 6px; opacity: 0; transition: opacity 0.3s; }
+
+/* PREVIEW CARD */
+.preview-card { background: #1a3a7a; border-radius: 13px; padding: 1.1rem; color: #fff; margin-bottom: 1rem; }
+.preview-card .pre-title { font-size: 0.65rem; font-weight: 700; opacity: 0.6; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; }
+.plan-row { background: rgba(255,255,255,0.1); border-radius: 8px; padding: 9px 12px; margin-bottom: 6px; }
+.plan-row.best { background: rgba(255,255,255,0.18); border: 1px solid rgba(255,255,255,0.3); }
+.plan-row.warn { background: rgba(204,34,34,0.15); border: 1px solid rgba(204,34,34,0.3); }
+.plan-title { font-size: 0.7rem; font-weight: 700; opacity: 0.85; margin-bottom: 4px; text-transform: uppercase; }
+.plan-line { font-size: 0.78rem; opacity: 0.9; padding: 1px 0; }
+.best-badge { display: inline-block; background: #cc2222; color: #fff; font-size: 0.6rem; font-weight: 700; padding: 1px 6px; border-radius: 20px; margin-left: 4px; vertical-align: middle; }
+.warn-text { font-size: 0.7rem; opacity: 0.8; margin-top: 5px; padding-top: 5px; border-top: 1px solid rgba(255,255,255,0.15); font-style: italic; }
+
 /* ADMIN */
 .admin-wrap { max-width: 100%; overflow-x: auto; }
 table { border-collapse: collapse; width: 100%; background: #fff; border-radius: 12px; overflow: hidden; box-shadow: 0 2px 12px rgba(26,58,122,0.08); margin-bottom: 1.5rem; font-size: 12px; }
@@ -75,71 +100,81 @@ tr.collapsed { display: none; }
 
 <!-- ESCOLHEDOR -->
 <div id="tab-escolhedor" class="tab-content active">
-  <div class="logo">
-    <h1>Idioma <span>Independente</span></h1>
-    <p>Escolhedor de preços</p>
+  <div class="col-left">
+    <div class="logo">
+      <h1>Idioma <span>Independente</span></h1>
+      <p>Escolhedor de preços</p>
+    </div>
+    <div class="instructions">
+      <h3>📋 Como usar</h3>
+      <ol>
+        <li>Selecione todos os quadrados de acordo com o valor a ser enviado.</li>
+        <li>Clique em <strong>Influencer</strong> e adicione o cupom referente ao cadastro dele.</li>
+        <li>Clique em <strong>Copiar Mensagem para WhatsApp</strong> e envie os valores para o lead.</li>
+      </ol>
+    </div>
+    <div class="card">
+      <div class="section-title">Idioma</div>
+      <div class="toggle-group" id="idioma-group">
+        <button class="toggle-btn active" data-ii="0">Inglês / Espanhol</button>
+        <button class="toggle-btn" data-ii="1">Francês</button>
+        <button class="toggle-btn" data-ii="2">Italiano / Alemão / Outros</button>
+      </div>
+      <hr class="divider">
+      <div class="section-title">Tipo de curso</div>
+      <div class="toggle-group" id="tipo-group">
+        <button class="toggle-btn active" data-pi="0">Normal</button>
+        <button class="toggle-btn" data-pi="1">Business / Kids & Teens</button>
+        <button class="toggle-btn red" data-pi="2" id="btn-prof">Prova de Proficiência</button>
+      </div>
+      <hr class="divider">
+      <div class="section-title">Turma</div>
+      <div class="toggle-group" id="turma-group">
+        <button class="toggle-btn active" data-mt="1" data-label="Particular">Particular</button>
+        <button class="toggle-btn" data-mt="0.75" data-label="Dupla">Dupla</button>
+        <button class="toggle-btn" data-mt="0.66" data-label="Trio">Trio</button>
+        <button class="toggle-btn" data-mt="0.56" data-label="Quarteto">Quarteto</button>
+        <button class="toggle-btn" data-mt="0.5" data-label="Cinco+">Cinco+</button>
+      </div>
+      <hr class="divider">
+      <div class="section-title">Cupom</div>
+      <div class="toggle-group" id="cupom-group">
+        <button class="toggle-btn active" data-cupom="indicacao">Cupom INDICAÇÃO</button>
+        <button class="toggle-btn" data-cupom="influencer">Influencer</button>
+        <button class="toggle-btn" data-cupom="sem_desconto">Lead não confirmou<br><small style="font-size:0.65rem">Só valores riscados</small></button>
+      </div>
+      <div id="cupom-input-wrap" style="display:none; margin-top:8px;">
+        <input type="text" id="cupom-input" placeholder="Digite o cupom do influencer..." />
+      </div>
+      <hr class="divider">
+      <div class="section-title">Pacotes a exibir</div>
+      <div class="toggle-group" id="pacotes-group">
+        <button class="toggle-btn active" data-pkg="main">1, 2 e 3 anos</button>
+        <button class="toggle-btn" data-pkg="all">Incluir 6 meses <span style="font-size:0.65rem">⚠️ só avançados</span></button>
+      </div>
+      <hr class="divider">
+      <div class="section-title">Frequência na mensagem</div>
+      <div class="toggle-group" id="freq-group">
+        <button class="toggle-btn active" data-fq="12">1x e 2x na semana</button>
+        <button class="toggle-btn" data-fq="123">Incluir 3x na semana</button>
+      </div>
+    </div>
   </div>
 
-  <div class="card">
-    <div class="section-title">Idioma</div>
-    <div class="toggle-group" id="idioma-group">
-      <button class="toggle-btn active" data-ii="0">Inglês<small>/ Espanhol</small></button>
-      <button class="toggle-btn" data-ii="1">Francês</button>
-      <button class="toggle-btn" data-ii="2">Italiano / Alemão<small>ou Outros</small></button>
+  <div class="col-right">
+    <div class="card">
+      <div class="section-title">Mensagem para WhatsApp</div>
+      <div class="msg-preview" id="msg-preview"></div>
+      <button class="copy-btn" onclick="copyMsg()">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.558 4.142 1.535 5.9L.057 23.57a.75.75 0 00.906.919l5.857-1.53A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.907 0-3.699-.504-5.25-1.385l-.372-.213-3.844 1.004 1.026-3.733-.232-.381A9.956 9.956 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+        Copiar Mensagem para WhatsApp
+      </button>
+      <div class="copied" id="copied-msg">✓ Copiado!</div>
     </div>
-    <hr class="divider">
-    <div class="section-title">Tipo de curso</div>
-    <div class="toggle-group" id="tipo-group">
-      <button class="toggle-btn active" data-pi="0">Normal</button>
-      <button class="toggle-btn" data-pi="1">Business<small>ou Kids / Teens</small></button>
-      <button class="toggle-btn red" data-pi="2" id="btn-prof">Prova de<small>Proficiência</small></button>
+    <div class="preview-card">
+      <div class="pre-title">Prévia dos pacotes</div>
+      <div id="result-plans"></div>
     </div>
-    <hr class="divider">
-    <div class="section-title">Turma</div>
-    <div class="toggle-group" id="turma-group">
-      <button class="toggle-btn active" data-mt="1">Particular</button>
-      <button class="toggle-btn" data-mt="0.75">Dupla</button>
-      <button class="toggle-btn" data-mt="0.66">Trio</button>
-      <button class="toggle-btn" data-mt="0.56">Quarteto</button>
-      <button class="toggle-btn" data-mt="0.5">Cinco+</button>
-    </div>
-    <hr class="divider">
-    <div class="section-title">Cupom</div>
-    <div class="toggle-group" id="cupom-group">
-      <button class="toggle-btn active" data-cupom="indicacao">Cupom INDICAÇÃO</button>
-      <button class="toggle-btn" data-cupom="influencer">Pacote Influencer</button>
-    </div>
-    <div id="cupom-input-wrap" style="display:none; margin-top:10px;">
-      <input type="text" id="cupom-input" placeholder="Digite o cupom do influencer..." style="width:100%;padding:10px 14px;border:1.5px solid #d0d8e8;border-radius:9px;font-size:0.9rem;color:#1a3a7a;background:#f5f8ff;outline:none;" />
-    </div>
-    <hr class="divider">
-    <div class="section-title">Pacotes a exibir</div>
-    <div class="toggle-group" id="pacotes-group">
-      <button class="toggle-btn active" data-pkg="main">1, 2 e 3 anos</button>
-      <button class="toggle-btn" data-pkg="all">Incluir 6 meses<small>⚠️ só avançados</small></button>
-    </div>
-    <hr class="divider">
-    <div class="section-title">Frequência na mensagem</div>
-    <div class="toggle-group" id="freq-group">
-      <button class="toggle-btn active" data-fq="12">1x e 2x na semana</button>
-      <button class="toggle-btn" data-fq="123">1x, 2x e 3x na semana</button>
-    </div>
-  </div>
-
-  <div class="card">
-    <div class="result-box">
-      <div id="result-plans" class="result-plans"></div>
-    </div>
-  </div>
-
-  <div class="card">
-    <div class="section-title">Mensagem para WhatsApp</div>
-    <div class="msg-preview" id="msg-preview"></div>
-    <button class="copy-btn" onclick="copyMsg()">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.558 4.142 1.535 5.9L.057 23.57a.75.75 0 00.906.919l5.857-1.53A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.907 0-3.699-.504-5.25-1.385l-.372-.213-3.844 1.004 1.026-3.733-.232-.381A9.956 9.956 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
-      Copiar para WhatsApp
-    </button>
-    <div class="copied" id="copied-msg">✓ Copiado!</div>
   </div>
 </div>
 
@@ -147,14 +182,10 @@ tr.collapsed { display: none; }
 <div id="tab-admin" class="tab-content">
   <button class="save-btn" onclick="saveAdmin()">💾 Salvar alterações</button>
   <span class="save-ok" id="save-ok">✓ Salvo!</span>
-
-  <!-- PROMOS -->
   <div class="promo-card">
     <h3>🎁 Promos e Bônus por Mês</h3>
     <div id="promo-fields"></div>
   </div>
-
-  <!-- TABELA -->
   <div class="admin-wrap">
     <table>
       <thead>
@@ -179,22 +210,20 @@ tr.collapsed { display: none; }
 </div>
 
 <script>
-// ── DATA ────────────────────────────────────────────────
 const MESES = ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'];
-
 const PROMO_DATA = [
-  { titulo: 'Promoção de Início de Ano - Condições especiais válidas até 30/01!', bonus: '*BÔNUS DE JANEIRO*: Planilha SMART automatizada para você mensurar seu progresso no idioma' },
-  { titulo: 'Promoção de Carnaval - Condições especiais válidas até 28/02', bonus: '*BÔNUS DE FEVEREIRO:* 3 Vídeos para aprender com netflix + artigos científicos + Viagens' },
-  { titulo: '🎉 Promoção Ano novo brasileiro - Condições especiais válidas até 31/03!', bonus: '*BÔNUS DE MARÇO:* Passo a passo de configuração de conta de Youtube para aprender idiomas + Cronograma e rotina individual de estudos' },
-  { titulo: 'Promoção de Páscoa - Condições especiais válidas até 30/04!', bonus: '*BÔNUS DE ABRIL:* Lista de perguntas mais importantes para você se "virar" em um idioma + Como fazer uma apresentação eficaz + Guia do aluno' },
-  { titulo: 'Promoção Mês do trabalhador - Condições especiais válidas até 31/05!', bonus: '*BÔNUS DE MAIO*: Aprenda inglês com FRIENDS! 10 aulas exclusivas com FRIENDS direto no classroom + atividades bônus.' },
-  { titulo: 'Promoção Fim de semestre - Condições especiais válidas até 30/06!', bonus: '*BÔNUS DE JUNHO*: Aprenda inglês com FRIENDS! 10 tarefas exclusivas com FRIENDS direto no classroom + atividades bônus.' },
-  { titulo: 'Promoção Mês das férias escolares - Condições especiais válidas até 31/07!', bonus: '*BÔNUS DE JULHO:* Visiting US: Parks and daily life + Lista de frases úteis em viagens (pdf) + Duolingo test tips' },
-  { titulo: 'Promoção Volta às aulas - Condições especiais válidas até 31/08!', bonus: '*BÔNUS DE AGOSTO:* Business English com The Office + cupom de desconto para dar de presente 10% em qlq idioma + 5 diálogos para aprender inglês' },
-  { titulo: 'Mês da Independência no Idioma - Promoção válida até 30/09', bonus: '*BÔNUS DE SETEMBRO:* Prompt de estudo com o chat GPT + Curso de mindfulness completo + Cronograma de rotina individual de estudos' },
-  { titulo: 'Promoção das Crianças - Condições especiais válidas até 31/10!', bonus: '🎁*GRATUITO - Somente em Outubro*: Destravando o Inglês: Do Básico à Confiança (Curso Completo Online com + de 100 aulas + 40 pdfs para Estudo)' },
-  { titulo: 'Promoção de Novembro - Condições especiais válidas até 30/11!', bonus: '*BÔNUS DE NOVEMBRO*: Em breve!' },
-  { titulo: 'Promoção de Dezembro - Condições especiais válidas até 31/12!', bonus: '*BÔNUS DE DEZEMBRO*: Em breve!' },
+  { titulo:'Promoção de Início de Ano - Condições especiais válidas até 30/01!', bonus:'*BÔNUS DE JANEIRO*: Planilha SMART automatizada para você mensurar seu progresso no idioma' },
+  { titulo:'Promoção de Carnaval - Condições especiais válidas até 28/02', bonus:'*BÔNUS DE FEVEREIRO:* 3 Vídeos para aprender com netflix + artigos científicos + Viagens' },
+  { titulo:'🎉 Promoção Ano novo brasileiro - Condições especiais válidas até 31/03!', bonus:'*BÔNUS DE MARÇO:* Passo a passo de configuração de conta de Youtube para aprender idiomas + Cronograma e rotina individual de estudos' },
+  { titulo:'Promoção de Páscoa - Condições especiais válidas até 30/04!', bonus:'*BÔNUS DE ABRIL:* Lista de perguntas mais importantes para você se "virar" em um idioma + Como fazer uma apresentação eficaz + Guia do aluno' },
+  { titulo:'Promoção Mês do trabalhador - Condições especiais válidas até 31/05!', bonus:'*BÔNUS DE MAIO*: Aprenda inglês com FRIENDS! 10 aulas exclusivas com FRIENDS direto no classroom + atividades bônus.' },
+  { titulo:'Promoção Fim de semestre - Condições especiais válidas até 30/06!', bonus:'*BÔNUS DE JUNHO*: Aprenda inglês com FRIENDS! 10 tarefas exclusivas com FRIENDS direto no classroom + atividades bônus.' },
+  { titulo:'Promoção Mês das férias escolares - Condições especiais válidas até 31/07!', bonus:'*BÔNUS DE JULHO:* Visiting US: Parks and daily life + Lista de frases úteis em viagens (pdf) + Duolingo test tips' },
+  { titulo:'Promoção Volta às aulas - Condições especiais válidas até 31/08!', bonus:'*BÔNUS DE AGOSTO:* Business English com The Office + cupom de desconto para dar de presente 10% em qlq idioma + 5 diálogos para aprender inglês' },
+  { titulo:'Mês da Independência no Idioma - Promoção válida até 30/09', bonus:'*BÔNUS DE SETEMBRO:* Prompt de estudo com o chat GPT + Curso de mindfulness completo + Cronograma de rotina individual de estudos' },
+  { titulo:'Promoção das Crianças - Condições especiais válidas até 31/10!', bonus:'🎁*GRATUITO - Somente em Outubro*: Destravando o Inglês: Do Básico à Confiança (Curso Completo Online com + de 100 aulas + 40 pdfs para Estudo)' },
+  { titulo:'Promoção de Novembro - Condições especiais válidas até 30/11!', bonus:'*BÔNUS DE NOVEMBRO*: Em breve!' },
+  { titulo:'Promoção de Dezembro - Condições especiais válidas até 31/12!', bonus:'*BÔNUS DE DEZEMBRO*: Em breve!' },
 ];
 
 const DURACOES = [
@@ -210,25 +239,15 @@ const AULAS_PACOTE = [
   [72,  144, 288, 432],
 ];
 const PLAN_META = [
-  { label:'6 Meses', sublabel:'Somente para Alunos Avançados', di:0, parc:6,  warn:true },
-  { label:'1 Ano',   sublabel:'Para Destravar o Segundo Idioma', di:1, parc:12 },
-  { label:'2 Anos',  sublabel:'Do Seu Nível à Fluência', di:2, parc:24, best:true },
-  { label:'3 Anos',  sublabel:'Do Básico à Fluência + Práticas', di:3, parc:36 },
+  { label:'6 Meses',  sublabel:'Somente para Alunos Avançados', di:0, parc:6,  warn:true },
+  { label:'1 Ano',    sublabel:'Para Destravar o Segundo Idioma', di:1, parc:12 },
+  { label:'2 Anos',   sublabel:'Do Seu Nível à Fluência', di:2, parc:24, best:true },
+  { label:'3 Anos',   sublabel:'Do Básico à Fluência + Práticas', di:3, parc:36 },
 ];
 const IDIOMAS = [
-  { label:'Inglês / Espanhol', pacotes:[
-    { label:'Normal' },
-    { label:'Business / Kids & Teens' },
-    { label:'Prova de Proficiência' },
-  ]},
-  { label:'Francês', pacotes:[
-    { label:'Normal' },
-    { label:'Business / Kids & Teens\n+ Avançado' },
-  ]},
-  { label:'Italiano / Alemão / Outros', pacotes:[
-    { label:'Normal' },
-    { label:'Business / Kids & Teens\n+ Avançado' },
-  ]},
+  { label:'Inglês / Espanhol', pacotes:[ { label:'Normal' }, { label:'Business / Kids & Teens' }, { label:'Prova de Proficiência' } ] },
+  { label:'Francês', pacotes:[ { label:'Normal' }, { label:'Business / Kids & Teens\n+ Avançado' } ] },
+  { label:'Italiano / Alemão / Outros', pacotes:[ { label:'Normal' }, { label:'Business / Kids & Teens\n+ Avançado' } ] },
 ];
 const MIRRORS = [{ from:[0,1], to:[1,0] }, { from:[1,1], to:[2,0] }];
 const TURMAS = [
@@ -260,155 +279,157 @@ let PRICES = {
   '1-1-0-0':427,'1-1-0-1':397,'1-1-0-2':314,'1-1-0-3':297,
   '1-1-1-0':770,'1-1-1-1':734,'1-1-1-2':594,'1-1-1-3':570,
   '1-1-2-0':990,'1-1-2-1':938,'1-1-2-2':780,'1-1-2-3':770,
-  // Italiano Normal (espelha Francês Business+Avançado)
+  // Italiano Normal (espelha Francês Business)
   '2-0-0-0':427,'2-0-0-1':397,'2-0-0-2':314,'2-0-0-3':297,
   '2-0-1-0':770,'2-0-1-1':734,'2-0-1-2':594,'2-0-1-3':570,
   '2-0-2-0':990,'2-0-2-1':938,'2-0-2-2':780,'2-0-2-3':770,
-  // Italiano Business+Avançado (a preencher)
+  // Italiano Business+Avançado
   '2-1-0-0':0,'2-1-0-1':0,'2-1-0-2':0,'2-1-0-3':0,
   '2-1-1-0':0,'2-1-1-1':0,'2-1-1-2':0,'2-1-1-3':0,
   '2-1-2-0':0,'2-1-2-1':0,'2-1-2-2':0,'2-1-2-3':0,
 };
 
-// ── ROUNDING ─────────────────────────────────────────────
 function smartRound(val) {
   if (val <= 0) return 0;
-  const r = Math.round(val);
-  const d = r % 10;
+  const r = Math.round(val), d = r % 10;
   if (d <= 3) return r - d - 3;
   if (d <= 7) return r - d + 7;
   return r - d + 7;
 }
 function fmtBRL(v) { return 'R$ ' + v.toLocaleString('pt-BR'); }
 
-// ── STATE ─────────────────────────────────────────────────
-let sel = { ii:0, pi:0, mt:1, pkg:'main', fq:'12', cupom:'indicacao' };
+let sel = { ii:0, pi:0, mt:1, turmaLabel:'Particular', pkg:'main', fq:'12', cupom:'indicacao' };
 
 function setupToggle(groupId, key, parse) {
   document.querySelectorAll(`#${groupId} .toggle-btn`).forEach(btn => {
     btn.addEventListener('click', () => {
       document.querySelectorAll(`#${groupId} .toggle-btn`).forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
-      const raw = btn.dataset[key === 'ii' ? 'ii' : key === 'pi' ? 'pi' : key === 'mt' ? 'mt' : key === 'pkg' ? 'pkg' : key === 'cupom' ? 'cupom' : 'fq'];
+      const attrs = { ii:'ii', pi:'pi', mt:'mt', pkg:'pkg', fq:'fq', cupom:'cupom' };
+      const raw = btn.dataset[attrs[key] || key];
       sel[key] = parse ? parse(raw) : raw;
+      if (key === 'mt') sel.turmaLabel = btn.dataset.label || 'Particular';
       if (key === 'ii') updateTipoBtns();
-      if (key === 'cupom') {
-        document.getElementById('cupom-input-wrap').style.display = raw === 'influencer' ? 'block' : 'none';
-      }
-      renderEscolhedor();
+      if (key === 'cupom') document.getElementById('cupom-input-wrap').style.display = raw === 'influencer' ? 'block' : 'none';
+      render();
     });
   });
 }
-document.getElementById('cupom-input').addEventListener('input', renderEscolhedor);
 setupToggle('idioma-group','ii', v => parseInt(v));
 setupToggle('tipo-group','pi', v => parseInt(v));
 setupToggle('turma-group','mt', v => parseFloat(v));
 setupToggle('pacotes-group','pkg', v => v);
 setupToggle('freq-group','fq', v => v);
 setupToggle('cupom-group','cupom', v => v);
+document.getElementById('cupom-input').addEventListener('input', render);
 
 function updateTipoBtns() {
   const profBtn = document.getElementById('btn-prof');
   if (sel.ii !== 0) {
-    profBtn.innerHTML = 'Avançado<small>Especialização</small>';
+    profBtn.innerHTML = 'Avançado / Especialização';
     profBtn.classList.remove('red');
   } else {
-    profBtn.innerHTML = 'Prova de<small>Proficiência</small>';
+    profBtn.innerHTML = 'Prova de Proficiência';
     profBtn.classList.add('red');
   }
 }
 
-// ── RENDER ────────────────────────────────────────────────
 function getPrice(ii, pi, fi, di) { return PRICES[`${ii}-${pi}-${fi}-${di}`] || 0; }
-function applyTurma(base, mt) {
-  if (mt === 1) return base;
-  return smartRound(base * mt);
+function applyTurma(base) {
+  if (sel.mt === 1) return base;
+  return smartRound(base * sel.mt);
 }
+function getFreqsToShow() { return sel.fq === '12' ? [0,1] : [0,1,2]; }
 
-function getFreqsToShow() {
-  return sel.fq === '12' ? [0,1] : [0,1,2];
-}
-
-function renderEscolhedor() {
-  const { ii, pi, mt, pkg } = sel;
-  const container = document.getElementById('result-plans');
-  container.innerHTML = '';
-  const freqs = getFreqsToShow();
-  const plans = pkg === 'main' ? PLAN_META.filter(p => !p.warn) : PLAN_META;
-
-  plans.forEach(plan => {
-    let lines = [];
-    freqs.forEach(fi => {
-      const base = getPrice(ii, pi, fi, plan.di);
-      if (!base) return;
-      const real = applyTurma(base, mt);
-      const risc = Math.round(real * 1.3);
-      const aulas = AULAS_PACOTE[fi][plan.di];
-      lines.push(`${fi+1}x na semana (${aulas} aulas) — ${plan.parc}x de ${fmtBRL(real)} ~${fmtBRL(risc)}~`);
-    });
-    if (!lines.length) return;
-
-    const div = document.createElement('div');
-    div.className = 'plan-row' + (plan.best ? ' best' : '') + (plan.warn ? ' warn' : '');
-    let badge = plan.best ? '<span class="best-badge">⭐ Melhor pacote</span>' : '';
-    let warnBadge = plan.warn ? '<span class="warn-badge">⚠️ Só avançados</span>' : '';
-    let warnText = plan.warn ? `<div class="warn-text">⚠️ PACOTES RECOMENDADOS SOMENTE PARA ALUNOS AVANÇADOS. Confirme com seu mentor antes de enviar.</div>` : '';
-    div.innerHTML = `<div class="plan-title">${plan.label} — ${plan.sublabel}${badge}${warnBadge}</div>`
-      + lines.map(l => `<div class="plan-line">${l}</div>`).join('')
-      + warnText;
-    container.appendChild(div);
-  });
-
+function render() {
+  renderPreview();
   renderMsg();
 }
 
-// ── MENSAGEM ──────────────────────────────────────────────
-function renderMsg() {
-  const { ii, pi, mt, pkg } = sel;
+function renderPreview() {
+  const { ii, pi, pkg } = sel;
   const freqs = getFreqsToShow();
-  const now = new Date();
-  const mes = now.getMonth(); // 0-indexed
-  const promo = PROMO_DATA[mes];
-  const idiomaLabel = IDIOMAS[ii].label;
-  const pacoteLabel = IDIOMAS[ii].pacotes[pi]?.label.replace(/\n/g,' ') || '';
-  const turmaLabel  = TURMAS.find(t => t.mt === mt)?.label || 'Particular';
   const plans = pkg === 'main' ? PLAN_META.filter(p => !p.warn) : PLAN_META.filter(p => p.warn);
-
-  let msg = '';
-  if (pkg === 'main') {
-    msg += `${promo.titulo}\n\n`;
-  }
-  msg += `*Curso de ${idiomaLabel}*`;
-  if (pi > 0) msg += ` — _${pacoteLabel}_`;
-  if (mt < 1) msg += ` — _Turma: ${turmaLabel}_`;
-  msg += '\n\n';
-  msg += `🗒️ *Pague em até 15 dias após o início*, sem custo de matrícula, via *boleto* 😌\n`;
-
-  const cupomVal = sel.cupom === 'influencer'
-    ? (document.getElementById('cupom-input').value.trim() || 'INFLUENCER')
-    : 'INDICAÇÃO';
-  msg += `🎟️ Cupom *${cupomVal}* aplicado\n\n`;
+  const container = document.getElementById('result-plans');
+  container.innerHTML = '';
 
   plans.forEach(plan => {
     let lines = [];
     freqs.forEach(fi => {
       const base = getPrice(ii, pi, fi, plan.di);
       if (!base) return;
-      const real = applyTurma(base, mt);
+      const real = applyTurma(base);
       const risc = Math.round(real * 1.3);
       const aulas = AULAS_PACOTE[fi][plan.di];
-      lines.push(`- ${fi+1}x na semana (${aulas} aulas) - de ~${fmtBRL(risc)}~ por ${fmtBRL(real)}/mês${plan.best && fi===1 ? ' - *Pacote Sugerido*' : ''}`);
+      if (sel.cupom === 'sem_desconto') {
+        lines.push(`${fi+1}x/sem (${aulas} aulas) — ${plan.parc}x de ${fmtBRL(risc)}`);
+      } else {
+        lines.push(`${fi+1}x/sem (${aulas} aulas) — ${plan.parc}x de ${fmtBRL(real)}`);
+      }
+    });
+    if (!lines.length) return;
+    const div = document.createElement('div');
+    div.className = 'plan-row' + (plan.best ? ' best' : '') + (plan.warn ? ' warn' : '');
+    let badge = plan.best ? '<span class="best-badge">⭐ Melhor</span>' : '';
+    div.innerHTML = `<div class="plan-title">${plan.label} — ${plan.sublabel}${badge}</div>`
+      + lines.map(l => `<div class="plan-line">${l}</div>`).join('');
+    if (plan.warn) div.innerHTML += `<div class="warn-text">⚠️ Confirme com seu mentor antes de enviar.</div>`;
+    container.appendChild(div);
+  });
+}
+
+function renderMsg() {
+  const { ii, pi, pkg, cupom } = sel;
+  const freqs = getFreqsToShow();
+  const now = new Date();
+  const promo = PROMO_DATA[now.getMonth()];
+  const idiomaLabel = IDIOMAS[ii].label;
+  const pacoteLabel = IDIOMAS[ii].pacotes[pi]?.label.replace(/\n/g,' ') || '';
+  const turmaLabel = sel.turmaLabel;
+  const plans = pkg === 'main' ? PLAN_META.filter(p => !p.warn) : PLAN_META.filter(p => p.warn);
+  const semDesconto = cupom === 'sem_desconto';
+
+  let msg = '';
+  if (pkg === 'main') msg += `${promo.titulo}\n\n`;
+
+  msg += `*Curso de ${idiomaLabel}*`;
+  if (pi > 0) msg += ` — _${pacoteLabel}_`;
+  if (sel.mt < 1) msg += ` — _${turmaLabel} (valor por aluno)_`;
+  msg += '\n\n';
+
+  msg += `🗒️ *Pague em até 15 dias após o início*, sem custo de matrícula, via *boleto* 😌\n`;
+
+  if (!semDesconto) {
+    const cupomVal = cupom === 'influencer'
+      ? (document.getElementById('cupom-input').value.trim() || 'INFLUENCER')
+      : 'INDICAÇÃO';
+    msg += `🎟️ Cupom *${cupomVal}* aplicado\n`;
+  }
+  msg += '\n';
+
+  plans.forEach(plan => {
+    let lines = [];
+    freqs.forEach(fi => {
+      const base = getPrice(ii, pi, fi, plan.di);
+      if (!base) return;
+      const real = applyTurma(base);
+      const risc = Math.round(real * 1.3);
+      const aulas = AULAS_PACOTE[fi][plan.di];
+      if (semDesconto) {
+        lines.push(`- ${fi+1}x na semana (${aulas} aulas) - ${plan.parc}x de ${fmtBRL(risc)}/mês`);
+      } else {
+        lines.push(`- ${fi+1}x na semana (${aulas} aulas) - de ~${fmtBRL(risc)}~ por ${fmtBRL(real)}/mês${plan.best && fi===1 ? ' - *Pacote Sugerido*' : ''}`);
+      }
     });
     if (!lines.length) return;
     msg += `* *${plan.label} de Curso* (${plan.sublabel}) - ${plan.parc} mensalidades${plan.best ? ' - *MELHOR PACOTE*' : ''}\n`;
     msg += lines.join('\n') + '\n\n';
   });
 
+  if (sel.mt < 1) msg += `👥 *${turmaLabel}* — valor por aluno\n`;
   msg += `🏠 Aula *${turmaLabel.toLowerCase()}* com Material Personalizado em Plataforma Exclusiva\n`;
   msg += `🆓 *GRÁTIS - Taxa de matrícula e de material = R$ 0,00*`;
-  if (pkg === 'main') {
-    msg += `\n\n${promo.bonus}`;
-  }
+  if (pkg === 'main') msg += `\n\n${promo.bonus}`;
 
   document.getElementById('msg-preview').textContent = msg;
 }
@@ -421,34 +442,26 @@ function copyMsg() {
   });
 }
 
-// ── ADMIN: PROMO FIELDS ───────────────────────────────────
+// ADMIN
+function isMirrorTarget(ii, pi) { return MIRRORS.some(m => m.to[0]===ii && m.to[1]===pi); }
+
 function buildPromoFields() {
   const container = document.getElementById('promo-fields');
   MESES.forEach((mes, i) => {
     const row = document.createElement('div');
     row.style.marginBottom = '1rem';
-    row.innerHTML = `<div style="font-size:11px;font-weight:700;color:#1a3a7a;margin-bottom:5px;text-transform:uppercase;letter-spacing:0.5px">${mes}</div>`;
-
-    const r1 = document.createElement('div');
-    r1.className = 'promo-row';
-    r1.innerHTML = `<label>Título promo</label>`;
-    const ta1 = document.createElement('textarea');
-    ta1.id = `promo-titulo-${i}`; ta1.value = PROMO_DATA[i].titulo;
+    row.innerHTML = `<div style="font-size:11px;font-weight:700;color:#1a3a7a;margin-bottom:5px;text-transform:uppercase">${mes}</div>`;
+    const r1 = document.createElement('div'); r1.className = 'promo-row';
+    r1.innerHTML = `<label>Título</label>`;
+    const ta1 = document.createElement('textarea'); ta1.id = `promo-titulo-${i}`; ta1.value = PROMO_DATA[i].titulo;
     r1.appendChild(ta1); row.appendChild(r1);
-
-    const r2 = document.createElement('div');
-    r2.className = 'promo-row';
+    const r2 = document.createElement('div'); r2.className = 'promo-row';
     r2.innerHTML = `<label>Bônus</label>`;
-    const ta2 = document.createElement('textarea');
-    ta2.id = `promo-bonus-${i}`; ta2.value = PROMO_DATA[i].bonus;
+    const ta2 = document.createElement('textarea'); ta2.id = `promo-bonus-${i}`; ta2.value = PROMO_DATA[i].bonus;
     r2.appendChild(ta2); row.appendChild(r2);
-
     container.appendChild(row);
   });
 }
-
-// ── ADMIN: TABELA ─────────────────────────────────────────
-function isMirrorTarget(ii, pi) { return MIRRORS.some(m => m.to[0]===ii && m.to[1]===pi); }
 
 function buildAdmin() {
   const tbody = document.getElementById('admin-tbody');
@@ -464,7 +477,6 @@ function buildAdmin() {
       tbody.querySelectorAll(`.gr-${ii}`).forEach(r => r.classList.toggle('collapsed', open));
     });
     hrow.appendChild(htd); tbody.appendChild(hrow);
-
     idioma.pacotes.forEach((pacote, pi) => {
       FREQS.forEach((freq, fi) => {
         const row = document.createElement('tr'); row.className = `gr-${ii}`;
@@ -473,9 +485,7 @@ function buildAdmin() {
           ltd.className = 'lbl'; ltd.rowSpan = FREQS.length;
           ltd.textContent = pacote.label; row.appendChild(ltd);
         }
-        const ftd = document.createElement('td');
-        ftd.className = 'sub'; ftd.textContent = freq+'x'; row.appendChild(ftd);
-
+        const ftd = document.createElement('td'); ftd.className = 'sub'; ftd.textContent = freq+'x'; row.appendChild(ftd);
         DURACOES.forEach((_, di) => {
           const key = `${ii}-${pi}-${fi}-${di}`;
           const pre = PRICES[key]||0;
@@ -487,9 +497,9 @@ function buildAdmin() {
           if (pre) inp.value=pre;
           inp.addEventListener('input', () => {
             const v=parseFloat(inp.value)||0;
-            document.getElementById('ar-'+key).textContent = v?'R$'+Math.round(v*1.3):'—';
+            document.getElementById('ar-'+key).textContent=v?'R$'+Math.round(v*1.3):'—';
             MIRRORS.forEach(m => {
-              if (m.from[0]===ii&&m.from[1]===pi) {
+              if(m.from[0]===ii&&m.from[1]===pi){
                 const tk=`${m.to[0]}-${m.to[1]}-${fi}-${di}`;
                 const ti=document.getElementById('adm-'+tk);
                 if(ti){ti.value=inp.value; document.getElementById('ar-'+tk).textContent=v?'R$'+Math.round(v*1.3):'—';}
@@ -505,7 +515,6 @@ function buildAdmin() {
       });
     });
   });
-  // mirrors on load
   MIRRORS.forEach(m => {
     FREQS.forEach((_,fi) => { DURACOES.forEach((_,di) => {
       const fk=`${m.from[0]}-${m.from[1]}-${fi}-${di}`, tk=`${m.to[0]}-${m.to[1]}-${fi}-${di}`;
@@ -516,18 +525,18 @@ function buildAdmin() {
 }
 
 function saveAdmin() {
-  IDIOMAS.forEach((_,ii) => { _.pacotes.forEach((_,pi) => { FREQS.forEach((_,fi) => { DURACOES.forEach((_,di) => {
+  IDIOMAS.forEach((_,ii)=>{_.pacotes.forEach((_,pi)=>{FREQS.forEach((_,fi)=>{DURACOES.forEach((_,di)=>{
     const key=`${ii}-${pi}-${fi}-${di}`;
     const inp=document.getElementById('adm-'+key);
     if(inp) PRICES[key]=parseFloat(inp.value)||0;
   });});});});
-  MESES.forEach((_,i) => {
+  MESES.forEach((_,i)=>{
     const t=document.getElementById(`promo-titulo-${i}`);
     const b=document.getElementById(`promo-bonus-${i}`);
     if(t) PROMO_DATA[i].titulo=t.value;
     if(b) PROMO_DATA[i].bonus=b.value;
   });
-  renderEscolhedor();
+  render();
   const ok=document.getElementById('save-ok');
   ok.style.opacity='1'; setTimeout(()=>ok.style.opacity='0',2500);
 }
@@ -541,7 +550,7 @@ function switchTab(tab, btn) {
 
 buildPromoFields();
 buildAdmin();
-renderEscolhedor();
+render();
 </script>
 </body>
 </html>
