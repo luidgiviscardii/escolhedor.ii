@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Idioma Independente</title>
+<title>Escolhedor de Preços — Idioma Independente</title>
 <style>
 * { box-sizing: border-box; margin: 0; padding: 0; }
 body { font-family: 'Segoe UI', Arial, sans-serif; background: #eef2f8; min-height: 100vh; }
@@ -298,7 +298,7 @@ function smartRound(val) {
 }
 function fmtBRL(v) { return 'R$ ' + v.toLocaleString('pt-BR'); }
 
-let sel = { ii:0, pi:0, mt:1, turmaLabel:'Particular', pkg:'main', fq:'12', cupom:'indicacao' };
+let sel = { ii:0, pi:0, mt:1, turmaLabel:'Particular', pkg:'main', fq:'12', cupom:'influencer' };
 
 function setupToggle(groupId, key, parse) {
   document.querySelectorAll(`#${groupId} .toggle-btn`).forEach(btn => {
@@ -310,7 +310,11 @@ function setupToggle(groupId, key, parse) {
       sel[key] = parse ? parse(raw) : raw;
       if (key === 'mt') sel.turmaLabel = btn.dataset.label || 'Particular';
       if (key === 'ii') updateTipoBtns();
-      if (key === 'cupom') document.getElementById('cupom-input-wrap').style.display = raw === 'influencer' ? 'block' : 'none';
+      if (key === 'cupom') {
+        const wrap = document.getElementById('cupom-input-wrap');
+        wrap.style.display = raw === 'influencer' ? 'block' : 'none';
+        document.getElementById('cupom-aviso').style.display = 'none';
+      }
       render();
     });
   });
@@ -435,6 +439,12 @@ function renderMsg() {
 }
 
 function copyMsg() {
+  if (sel.cupom === 'influencer' && !document.getElementById('cupom-input').value.trim()) {
+    document.getElementById('cupom-aviso').style.display = 'block';
+    document.getElementById('cupom-input').focus();
+    return;
+  }
+  document.getElementById('cupom-aviso').style.display = 'none';
   navigator.clipboard.writeText(document.getElementById('msg-preview').textContent).then(() => {
     const el = document.getElementById('copied-msg');
     el.style.opacity = '1';
