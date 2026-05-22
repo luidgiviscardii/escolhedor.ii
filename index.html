@@ -7,9 +7,11 @@
 <style>
 * { box-sizing: border-box; margin: 0; padding: 0; }
 body { font-family: 'Segoe UI', Arial, sans-serif; background: #eef2f8; min-height: 100vh; }
+
 .tabs { display: flex; background: #1a3a7a; }
 .tab-btn { flex: 1; padding: 14px; color: rgba(255,255,255,0.6); font-size: 13px; font-weight: 600; border: none; background: none; cursor: pointer; border-bottom: 3px solid transparent; transition: all 0.2s; }
 .tab-btn.active { color: #fff; border-bottom-color: #cc2222; }
+
 .tab-content { display: none; padding: 1.25rem 1rem 2rem; max-width: 1100px; margin: 0 auto; }
 .tab-content.active { display: block; }
 #tab-escolhedor.active { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; align-items: start; }
@@ -20,20 +22,17 @@ body { font-family: 'Segoe UI', Arial, sans-serif; background: #eef2f8; min-heig
   #tab-escolhedor .col-right { position: static; }
 }
 
-/* LOGO */
 .logo { text-align: center; margin-bottom: 1rem; }
 .logo h1 { font-size: 1.4rem; font-weight: 700; color: #1a3a7a; }
 .logo span { color: #cc2222; }
 .logo p { font-size: 0.75rem; color: #5a6a8a; margin-top: 3px; letter-spacing: 1px; text-transform: uppercase; }
 
-/* INSTRUCTIONS */
 .instructions { background: #fff; border-radius: 12px; border-left: 4px solid #1a3a7a; padding: 1rem 1.25rem; margin-bottom: 1.25rem; box-shadow: 0 2px 10px rgba(26,58,122,0.07); }
 .instructions h3 { font-size: 0.72rem; font-weight: 700; color: #1a3a7a; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.6rem; }
 .instructions ol { padding-left: 1.1rem; }
 .instructions li { font-size: 0.8rem; color: #3a4a6a; line-height: 1.6; margin-bottom: 3px; }
 .instructions li strong { color: #1a3a7a; }
 
-/* CARD */
 .card { background: #fff; border-radius: 14px; box-shadow: 0 4px 20px rgba(26,58,122,0.09); padding: 1.25rem; margin-bottom: 1rem; }
 .section-title { font-size: 0.68rem; font-weight: 700; color: #1a3a7a; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 0.65rem; }
 .toggle-group { display: flex; gap: 6px; flex-wrap: wrap; }
@@ -42,20 +41,17 @@ body { font-family: 'Segoe UI', Arial, sans-serif; background: #eef2f8; min-heig
 .toggle-btn.active.red { background: #cc2222; border-color: #cc2222; }
 .divider { border: none; border-top: 1px solid #eef2f8; margin: 1rem 0; }
 
-/* CUPOM INPUT */
-#cupom-input-wrap { margin-top: 8px; }
-#cupom-input { width: 100%; padding: 9px 14px; border: 1.5px solid #d0d8e8; border-radius: 9px; font-size: 0.9rem; color: #1a3a7a; background: #f5f8ff; outline: none; }
+#cupom-input { width: 100%; padding: 9px 14px; border: 1.5px solid #d0d8e8; border-radius: 9px; font-size: 0.9rem; color: #1a3a7a; background: #f5f8ff; outline: none; margin-top: 8px; }
 #cupom-input:focus { border-color: #1a3a7a; }
+#cupom-aviso { display: none; color: #cc2222; font-size: 0.75rem; font-weight: 600; margin-top: 5px; }
 
-/* MSG */
-.msg-preview { background: #f5f8ff; border-radius: 9px; padding: 1rem; font-size: 0.8rem; color: #1a3a7a; white-space: pre-wrap; line-height: 1.65; border: 1.5px solid #d0d8e8; }
+.msg-preview { background: #f5f8ff; border-radius: 9px; padding: 1rem; font-size: 0.8rem; color: #1a3a7a; white-space: pre-wrap; line-height: 1.65; border: 1.5px solid #d0d8e8; max-height: 400px; overflow-y: auto; }
 .copy-btn { margin-top: 0.75rem; width: 100%; padding: 13px; background: #25D366; color: #fff; border: none; border-radius: 9px; font-size: 1rem; font-weight: 700; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; }
 .copy-btn:hover { opacity: 0.88; }
 .copied { text-align: center; font-size: 0.78rem; color: #25D366; font-weight: 600; margin-top: 6px; opacity: 0; transition: opacity 0.3s; }
 
-/* PREVIEW CARD */
-.preview-card { background: #1a3a7a; border-radius: 13px; padding: 1.1rem; color: #fff; margin-bottom: 1rem; }
-.preview-card .pre-title { font-size: 0.65rem; font-weight: 700; opacity: 0.6; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; }
+.preview-card { background: #1a3a7a; border-radius: 13px; padding: 1.1rem; color: #fff; }
+.pre-title { font-size: 0.65rem; font-weight: 700; opacity: 0.6; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; }
 .plan-row { background: rgba(255,255,255,0.1); border-radius: 8px; padding: 9px 12px; margin-bottom: 6px; }
 .plan-row.best { background: rgba(255,255,255,0.18); border: 1px solid rgba(255,255,255,0.3); }
 .plan-row.warn { background: rgba(204,34,34,0.15); border: 1px solid rgba(204,34,34,0.3); }
@@ -65,7 +61,8 @@ body { font-family: 'Segoe UI', Arial, sans-serif; background: #eef2f8; min-heig
 .warn-text { font-size: 0.7rem; opacity: 0.8; margin-top: 5px; padding-top: 5px; border-top: 1px solid rgba(255,255,255,0.15); font-style: italic; }
 
 /* ADMIN */
-.admin-wrap { max-width: 100%; overflow-x: auto; }
+.admin-content { max-width: 960px; margin: 0 auto; padding: 1.25rem 1rem 2rem; }
+.admin-wrap { overflow-x: auto; }
 table { border-collapse: collapse; width: 100%; background: #fff; border-radius: 12px; overflow: hidden; box-shadow: 0 2px 12px rgba(26,58,122,0.08); margin-bottom: 1.5rem; font-size: 12px; }
 th { background: #1a3a7a; color: #fff; padding: 9px 10px; text-align: center; font-size: 11px; font-weight: 600; }
 th.left { text-align: left; }
@@ -100,10 +97,11 @@ tr.collapsed { display: none; }
 
 <!-- ESCOLHEDOR -->
 <div id="tab-escolhedor" class="tab-content active">
+
   <div class="col-left">
     <div class="logo">
       <h1>Idioma <span>Independente</span></h1>
-      <p>Escolhedor de preços</p>
+      <p>Escolhedor de Preços</p>
     </div>
     <div class="instructions">
       <h3>📋 Como usar</h3>
@@ -116,16 +114,16 @@ tr.collapsed { display: none; }
     <div class="card">
       <div class="section-title">Idioma</div>
       <div class="toggle-group" id="idioma-group">
-        <button class="toggle-btn active" data-ii="0">Inglês / Espanhol</button>
-        <button class="toggle-btn" data-ii="1">Francês</button>
-        <button class="toggle-btn" data-ii="2">Italiano / Alemão / Outros</button>
+        <button class="toggle-btn active" data-val="0">Inglês / Espanhol</button>
+        <button class="toggle-btn" data-val="1">Francês</button>
+        <button class="toggle-btn" data-val="2">Italiano / Alemão / Outros</button>
       </div>
       <hr class="divider">
       <div class="section-title">Tipo de curso</div>
       <div class="toggle-group" id="tipo-group">
-        <button class="toggle-btn active" data-pi="0">Normal</button>
-        <button class="toggle-btn" data-pi="1">Business / Kids & Teens</button>
-        <button class="toggle-btn red" data-pi="2" id="btn-prof">Prova de Proficiência</button>
+        <button class="toggle-btn active" data-val="0">Normal</button>
+        <button class="toggle-btn" data-val="1">Business / Kids & Teens</button>
+        <button class="toggle-btn red" data-val="2" id="btn-prof">Prova de Proficiência</button>
       </div>
       <hr class="divider">
       <div class="section-title">Turma</div>
@@ -139,24 +137,25 @@ tr.collapsed { display: none; }
       <hr class="divider">
       <div class="section-title">Cupom</div>
       <div class="toggle-group" id="cupom-group">
-        <button class="toggle-btn active" data-cupom="indicacao">Cupom INDICAÇÃO</button>
-        <button class="toggle-btn" data-cupom="influencer">Influencer</button>
-        <button class="toggle-btn" data-cupom="sem_desconto">Lead não confirmou<br><small style="font-size:0.65rem">Só valores riscados</small></button>
+        <button class="toggle-btn" data-val="indicacao">Cupom INDICAÇÃO</button>
+        <button class="toggle-btn active" data-val="influencer">Influencer</button>
+        <button class="toggle-btn" data-val="sem_desconto">Lead não confirmou<br><small style="font-size:0.65rem">Só valores riscados</small></button>
       </div>
-      <div id="cupom-input-wrap" style="display:none; margin-top:8px;">
+      <div id="cupom-input-wrap">
         <input type="text" id="cupom-input" placeholder="Digite o cupom do influencer..." />
+        <div id="cupom-aviso">⚠️ INSIRA O CUPOM DO INFLUENCER</div>
       </div>
       <hr class="divider">
       <div class="section-title">Pacotes a exibir</div>
       <div class="toggle-group" id="pacotes-group">
-        <button class="toggle-btn active" data-pkg="main">1, 2 e 3 anos</button>
-        <button class="toggle-btn" data-pkg="all">Incluir 6 meses <span style="font-size:0.65rem">⚠️ só avançados</span></button>
+        <button class="toggle-btn active" data-val="main">1, 2 e 3 anos</button>
+        <button class="toggle-btn" data-val="all">Incluir 6 meses ⚠️ só avançados</button>
       </div>
       <hr class="divider">
       <div class="section-title">Frequência na mensagem</div>
       <div class="toggle-group" id="freq-group">
-        <button class="toggle-btn active" data-fq="12">1x e 2x na semana</button>
-        <button class="toggle-btn" data-fq="123">Incluir 3x na semana</button>
+        <button class="toggle-btn active" data-val="12">1x e 2x na semana</button>
+        <button class="toggle-btn" data-val="123">Incluir 3x na semana</button>
       </div>
     </div>
   </div>
@@ -176,40 +175,44 @@ tr.collapsed { display: none; }
       <div id="result-plans"></div>
     </div>
   </div>
+
 </div>
 
 <!-- ADMIN -->
 <div id="tab-admin" class="tab-content">
-  <button class="save-btn" onclick="saveAdmin()">💾 Salvar alterações</button>
-  <span class="save-ok" id="save-ok">✓ Salvo!</span>
-  <div class="promo-card">
-    <h3>🎁 Promos e Bônus por Mês</h3>
-    <div id="promo-fields"></div>
-  </div>
-  <div class="admin-wrap">
-    <table>
-      <thead>
-        <tr>
-          <th class="left" rowspan="2">Idioma / Pacote</th>
-          <th class="left" rowspan="2">Freq.</th>
-          <th colspan="2">6 meses (6x)</th>
-          <th colspan="2">1 ano (12x)</th>
-          <th colspan="2">2 anos (24x)</th>
-          <th colspan="2">3 anos (36x)</th>
-        </tr>
-        <tr>
-          <th>Real</th><th>+30%</th>
-          <th>Real</th><th>+30%</th>
-          <th>Real</th><th>+30%</th>
-          <th>Real</th><th>+30%</th>
-        </tr>
-      </thead>
-      <tbody id="admin-tbody"></tbody>
-    </table>
+  <div class="admin-content">
+    <button class="save-btn" onclick="saveAdmin()">💾 Salvar alterações</button>
+    <span class="save-ok" id="save-ok">✓ Salvo!</span>
+    <div class="promo-card">
+      <h3>🎁 Promos e Bônus por Mês</h3>
+      <div id="promo-fields"></div>
+    </div>
+    <div class="admin-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th class="left" rowspan="2">Idioma / Pacote</th>
+            <th class="left" rowspan="2">Freq.</th>
+            <th colspan="2">6 meses (6x)</th>
+            <th colspan="2">1 ano (12x)</th>
+            <th colspan="2">2 anos (24x)</th>
+            <th colspan="2">3 anos (36x)</th>
+          </tr>
+          <tr>
+            <th>Real</th><th>+30%</th>
+            <th>Real</th><th>+30%</th>
+            <th>Real</th><th>+30%</th>
+            <th>Real</th><th>+30%</th>
+          </tr>
+        </thead>
+        <tbody id="admin-tbody"></tbody>
+      </table>
+    </div>
   </div>
 </div>
 
 <script>
+// ── PROMO DATA ────────────────────────────────────────────
 const MESES = ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'];
 const PROMO_DATA = [
   { titulo:'Promoção de Início de Ano - Condições especiais válidas até 30/01!', bonus:'*BÔNUS DE JANEIRO*: Planilha SMART automatizada para você mensurar seu progresso no idioma' },
@@ -226,6 +229,7 @@ const PROMO_DATA = [
   { titulo:'Promoção de Dezembro - Condições especiais válidas até 31/12!', bonus:'*BÔNUS DE DEZEMBRO*: Em breve!' },
 ];
 
+// ── ESTRUTURA ─────────────────────────────────────────────
 const DURACOES = [
   { label:'6 meses', parc:6  },
   { label:'1 ano',   parc:12 },
@@ -239,56 +243,54 @@ const AULAS_PACOTE = [
   [72,  144, 288, 432],
 ];
 const PLAN_META = [
-  { label:'6 Meses',  sublabel:'Somente para Alunos Avançados', di:0, parc:6,  warn:true },
-  { label:'1 Ano',    sublabel:'Para Destravar o Segundo Idioma', di:1, parc:12 },
-  { label:'2 Anos',   sublabel:'Do Seu Nível à Fluência', di:2, parc:24, best:true },
-  { label:'3 Anos',   sublabel:'Do Básico à Fluência + Práticas', di:3, parc:36 },
+  { label:'6 Meses',  sublabel:'Somente para Alunos Avançados',      di:0, parc:6,  warn:true },
+  { label:'1 Ano',    sublabel:'Para Destravar o Segundo Idioma',     di:1, parc:12 },
+  { label:'2 Anos',   sublabel:'Do Seu Nível à Fluência',             di:2, parc:24, best:true },
+  { label:'3 Anos',   sublabel:'Do Básico à Fluência + Práticas',     di:3, parc:36 },
 ];
 const IDIOMAS = [
-  { label:'Inglês / Espanhol', pacotes:[ { label:'Normal' }, { label:'Business / Kids & Teens' }, { label:'Prova de Proficiência' } ] },
-  { label:'Francês', pacotes:[ { label:'Normal' }, { label:'Business / Kids & Teens\n+ Avançado' } ] },
-  { label:'Italiano / Alemão / Outros', pacotes:[ { label:'Normal' }, { label:'Business / Kids & Teens\n+ Avançado' } ] },
+  { label:'Inglês / Espanhol', pacotes:[ {label:'Normal'}, {label:'Business / Kids & Teens'}, {label:'Prova de Proficiência'} ] },
+  { label:'Francês',           pacotes:[ {label:'Normal'}, {label:'Business / Kids & Teens\n+ Avançado'} ] },
+  { label:'Italiano / Alemão / Outros', pacotes:[ {label:'Normal'}, {label:'Business / Kids & Teens\n+ Avançado'} ] },
 ];
 const MIRRORS = [{ from:[0,1], to:[1,0] }, { from:[1,1], to:[2,0] }];
 const TURMAS = [
-  { label:'Particular', mt:1 },
+  { label:'Particular', mt:1    },
   { label:'Dupla',      mt:0.75 },
   { label:'Trio',       mt:0.66 },
   { label:'Quarteto',   mt:0.56 },
   { label:'Cinco+',     mt:0.5  },
 ];
 
+// ── PREÇOS ────────────────────────────────────────────────
 let PRICES = {
-  // Inglês Normal
-  '0-0-0-0':297,'0-0-0-1':257,'0-0-0-2':227,'0-0-0-3':197,
-  '0-0-1-0':517,'0-0-1-1':467,'0-0-1-2':427,'0-0-1-3':397,
-  '0-0-2-0':720,'0-0-2-1':697,'0-0-2-2':597,'0-0-2-3':577,
-  // Inglês Business
-  '0-1-0-0':317,'0-1-0-1':297,'0-1-0-2':257,'0-1-0-3':244,
-  '0-1-1-0':617,'0-1-1-1':597,'0-1-1-2':577,'0-1-1-3':517,
-  '0-1-2-0':819,'0-1-2-1':790,'0-1-2-2':697,'0-1-2-3':657,
-  // Inglês Proficiência
-  '0-2-0-0':437,'0-2-0-1':397,'0-2-0-2':314,'0-2-0-3':0,
-  '0-2-1-0':740,'0-2-1-1':697,'0-2-1-2':594,'0-2-1-3':0,
-  '0-2-2-0':890,'0-2-2-1':0,  '0-2-2-2':0,  '0-2-2-3':0,
-  // Francês Normal (espelha Inglês Business)
-  '1-0-0-0':317,'1-0-0-1':297,'1-0-0-2':257,'1-0-0-3':244,
-  '1-0-1-0':617,'1-0-1-1':597,'1-0-1-2':577,'1-0-1-3':517,
-  '1-0-2-0':819,'1-0-2-1':790,'1-0-2-2':697,'1-0-2-3':657,
-  // Francês Business+Avançado
-  '1-1-0-0':427,'1-1-0-1':397,'1-1-0-2':314,'1-1-0-3':297,
-  '1-1-1-0':770,'1-1-1-1':734,'1-1-1-2':594,'1-1-1-3':570,
-  '1-1-2-0':990,'1-1-2-1':938,'1-1-2-2':780,'1-1-2-3':770,
-  // Italiano Normal (espelha Francês Business)
-  '2-0-0-0':427,'2-0-0-1':397,'2-0-0-2':314,'2-0-0-3':297,
-  '2-0-1-0':770,'2-0-1-1':734,'2-0-1-2':594,'2-0-1-3':570,
-  '2-0-2-0':990,'2-0-2-1':938,'2-0-2-2':780,'2-0-2-3':770,
-  // Italiano Business+Avançado
-  '2-1-0-0':0,'2-1-0-1':0,'2-1-0-2':0,'2-1-0-3':0,
-  '2-1-1-0':0,'2-1-1-1':0,'2-1-1-2':0,'2-1-1-3':0,
-  '2-1-2-0':0,'2-1-2-1':0,'2-1-2-2':0,'2-1-2-3':0,
+  '0-0-0-0':297, '0-0-0-1':257, '0-0-0-2':227, '0-0-0-3':197,
+  '0-0-1-0':517, '0-0-1-1':467, '0-0-1-2':427, '0-0-1-3':397,
+  '0-0-2-0':720, '0-0-2-1':697, '0-0-2-2':597, '0-0-2-3':577,
+  '0-1-0-0':317, '0-1-0-1':297, '0-1-0-2':257, '0-1-0-3':244,
+  '0-1-1-0':617, '0-1-1-1':597, '0-1-1-2':577, '0-1-1-3':517,
+  '0-1-2-0':819, '0-1-2-1':790, '0-1-2-2':697, '0-1-2-3':657,
+  '0-2-0-0':437, '0-2-0-1':397, '0-2-0-2':314, '0-2-0-3':0,
+  '0-2-1-0':740, '0-2-1-1':697, '0-2-1-2':594, '0-2-1-3':0,
+  '0-2-2-0':890, '0-2-2-1':0,   '0-2-2-2':0,   '0-2-2-3':0,
+  '1-0-0-0':317, '1-0-0-1':297, '1-0-0-2':257, '1-0-0-3':244,
+  '1-0-1-0':617, '1-0-1-1':597, '1-0-1-2':577, '1-0-1-3':517,
+  '1-0-2-0':819, '1-0-2-1':790, '1-0-2-2':697, '1-0-2-3':657,
+  '1-1-0-0':427, '1-1-0-1':397, '1-1-0-2':314, '1-1-0-3':297,
+  '1-1-1-0':770, '1-1-1-1':734, '1-1-1-2':594, '1-1-1-3':570,
+  '1-1-2-0':990, '1-1-2-1':938, '1-1-2-2':780, '1-1-2-3':770,
+  '2-0-0-0':427, '2-0-0-1':397, '2-0-0-2':314, '2-0-0-3':297,
+  '2-0-1-0':770, '2-0-1-1':734, '2-0-1-2':594, '2-0-1-3':570,
+  '2-0-2-0':990, '2-0-2-1':938, '2-0-2-2':780, '2-0-2-3':770,
+  '2-1-0-0':0,   '2-1-0-1':0,   '2-1-0-2':0,   '2-1-0-3':0,
+  '2-1-1-0':0,   '2-1-1-1':0,   '2-1-1-2':0,   '2-1-1-3':0,
+  '2-1-2-0':0,   '2-1-2-1':0,   '2-1-2-2':0,   '2-1-2-3':0,
 };
 
+// ── ESTADO ────────────────────────────────────────────────
+const state = { ii:0, pi:0, mt:1, turmaLabel:'Particular', pkg:'main', fq:'12', cupom:'influencer' };
+
+// ── HELPERS ───────────────────────────────────────────────
 function smartRound(val) {
   if (val <= 0) return 0;
   const r = Math.round(val), d = r % 10;
@@ -297,84 +299,67 @@ function smartRound(val) {
   return r - d + 7;
 }
 function fmtBRL(v) { return 'R$ ' + v.toLocaleString('pt-BR'); }
+function getPrice(ii, pi, fi, di) { return PRICES[`${ii}-${pi}-${fi}-${di}`] || 0; }
+function applyTurma(base) { return state.mt === 1 ? base : smartRound(base * state.mt); }
+function getFreqs() { return state.fq === '12' ? [0,1] : [0,1,2]; }
 
-let sel = { ii:0, pi:0, mt:1, turmaLabel:'Particular', pkg:'main', fq:'12', cupom:'influencer' };
-
-function setupToggle(groupId, key, parse) {
+// ── TOGGLES ───────────────────────────────────────────────
+function setupToggle(groupId, onChange) {
   document.querySelectorAll(`#${groupId} .toggle-btn`).forEach(btn => {
     btn.addEventListener('click', () => {
       document.querySelectorAll(`#${groupId} .toggle-btn`).forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
-      const attrs = { ii:'ii', pi:'pi', mt:'mt', pkg:'pkg', fq:'fq', cupom:'cupom' };
-      const raw = btn.dataset[attrs[key] || key];
-      sel[key] = parse ? parse(raw) : raw;
-      if (key === 'mt') sel.turmaLabel = btn.dataset.label || 'Particular';
-      if (key === 'ii') updateTipoBtns();
-      if (key === 'cupom') {
-        const wrap = document.getElementById('cupom-input-wrap');
-        wrap.style.display = raw === 'influencer' ? 'block' : 'none';
-        document.getElementById('cupom-aviso').style.display = 'none';
-      }
+      onChange(btn);
       render();
     });
   });
 }
-setupToggle('idioma-group','ii', v => parseInt(v));
-setupToggle('tipo-group','pi', v => parseInt(v));
-setupToggle('turma-group','mt', v => parseFloat(v));
-setupToggle('pacotes-group','pkg', v => v);
-setupToggle('freq-group','fq', v => v);
-setupToggle('cupom-group','cupom', v => v);
-document.getElementById('cupom-input').addEventListener('input', render);
 
-function updateTipoBtns() {
+setupToggle('idioma-group', btn => {
+  state.ii = parseInt(btn.dataset.val);
   const profBtn = document.getElementById('btn-prof');
-  if (sel.ii !== 0) {
-    profBtn.innerHTML = 'Avançado / Especialização';
-    profBtn.classList.remove('red');
-  } else {
-    profBtn.innerHTML = 'Prova de Proficiência';
-    profBtn.classList.add('red');
-  }
-}
+  if (state.ii !== 0) { profBtn.textContent = 'Avançado / Especialização'; profBtn.classList.remove('red'); }
+  else { profBtn.textContent = 'Prova de Proficiência'; profBtn.classList.add('red'); }
+});
+setupToggle('tipo-group',    btn => { state.pi = parseInt(btn.dataset.val); });
+setupToggle('turma-group',   btn => { state.mt = parseFloat(btn.dataset.mt); state.turmaLabel = btn.dataset.label; });
+setupToggle('cupom-group',   btn => {
+  state.cupom = btn.dataset.val;
+  document.getElementById('cupom-input-wrap').style.display = state.cupom === 'influencer' ? 'block' : 'none';
+  document.getElementById('cupom-aviso').style.display = 'none';
+});
+setupToggle('pacotes-group', btn => { state.pkg = btn.dataset.val; });
+setupToggle('freq-group',    btn => { state.fq  = btn.dataset.val; });
 
-function getPrice(ii, pi, fi, di) { return PRICES[`${ii}-${pi}-${fi}-${di}`] || 0; }
-function applyTurma(base) {
-  if (sel.mt === 1) return base;
-  return smartRound(base * sel.mt);
-}
-function getFreqsToShow() { return sel.fq === '12' ? [0,1] : [0,1,2]; }
+document.getElementById('cupom-input').addEventListener('input', () => {
+  document.getElementById('cupom-aviso').style.display = 'none';
+  render();
+});
 
+// ── RENDER ────────────────────────────────────────────────
 function render() {
   renderPreview();
   renderMsg();
 }
 
 function renderPreview() {
-  const { ii, pi, pkg } = sel;
-  const freqs = getFreqsToShow();
-  const plans = pkg === 'main' ? PLAN_META.filter(p => !p.warn) : PLAN_META.filter(p => p.warn);
+  const freqs = getFreqs();
+  const plans = state.pkg === 'main' ? PLAN_META.filter(p => !p.warn) : PLAN_META.filter(p => p.warn);
   const container = document.getElementById('result-plans');
   container.innerHTML = '';
-
   plans.forEach(plan => {
-    let lines = [];
+    const lines = [];
     freqs.forEach(fi => {
-      const base = getPrice(ii, pi, fi, plan.di);
+      const base = getPrice(state.ii, state.pi, fi, plan.di);
       if (!base) return;
       const real = applyTurma(base);
-      const risc = Math.round(real * 1.3);
       const aulas = AULAS_PACOTE[fi][plan.di];
-      if (sel.cupom === 'sem_desconto') {
-        lines.push(`${fi+1}x/sem (${aulas} aulas) — ${plan.parc}x de ${fmtBRL(risc)}`);
-      } else {
-        lines.push(`${fi+1}x/sem (${aulas} aulas) — ${plan.parc}x de ${fmtBRL(real)}`);
-      }
+      lines.push(`${fi+1}x/sem (${aulas} aulas) — ${plan.parc}x de ${fmtBRL(real)}`);
     });
     if (!lines.length) return;
     const div = document.createElement('div');
     div.className = 'plan-row' + (plan.best ? ' best' : '') + (plan.warn ? ' warn' : '');
-    let badge = plan.best ? '<span class="best-badge">⭐ Melhor</span>' : '';
+    const badge = plan.best ? '<span class="best-badge">⭐ Melhor</span>' : '';
     div.innerHTML = `<div class="plan-title">${plan.label} — ${plan.sublabel}${badge}</div>`
       + lines.map(l => `<div class="plan-line">${l}</div>`).join('');
     if (plan.warn) div.innerHTML += `<div class="warn-text">⚠️ Confirme com seu mentor antes de enviar.</div>`;
@@ -383,36 +368,29 @@ function renderPreview() {
 }
 
 function renderMsg() {
-  const { ii, pi, pkg, cupom } = sel;
-  const freqs = getFreqsToShow();
-  const now = new Date();
-  const promo = PROMO_DATA[now.getMonth()];
+  const { ii, pi, mt, turmaLabel, pkg, cupom } = state;
+  const freqs = getFreqs();
+  const promo = PROMO_DATA[new Date().getMonth()];
   const idiomaLabel = IDIOMAS[ii].label;
   const pacoteLabel = IDIOMAS[ii].pacotes[pi]?.label.replace(/\n/g,' ') || '';
-  const turmaLabel = sel.turmaLabel;
   const plans = pkg === 'main' ? PLAN_META.filter(p => !p.warn) : PLAN_META.filter(p => p.warn);
   const semDesconto = cupom === 'sem_desconto';
+  const cupomVal = cupom === 'influencer'
+    ? (document.getElementById('cupom-input').value.trim() || '')
+    : 'INDICAÇÃO';
 
   let msg = '';
   if (pkg === 'main') msg += `${promo.titulo}\n\n`;
-
   msg += `*Curso de ${idiomaLabel}*`;
   if (pi > 0) msg += ` — _${pacoteLabel}_`;
-  if (sel.mt < 1) msg += ` — _${turmaLabel} (valor por aluno)_`;
+  if (mt < 1) msg += ` — _${turmaLabel} (valor por aluno)_`;
   msg += '\n\n';
-
   msg += `🗒️ *Pague em até 15 dias após o início*, sem custo de matrícula, via *boleto* 😌\n`;
-
-  if (!semDesconto) {
-    const cupomVal = cupom === 'influencer'
-      ? (document.getElementById('cupom-input').value.trim() || 'INFLUENCER')
-      : 'INDICAÇÃO';
-    msg += `🎟️ Cupom *${cupomVal}* aplicado\n`;
-  }
+  if (!semDesconto) msg += `🎟️ Cupom *${cupomVal || 'INFLUENCER'}* aplicado\n`;
   msg += '\n';
 
   plans.forEach(plan => {
-    let lines = [];
+    const lines = [];
     freqs.forEach(fi => {
       const base = getPrice(ii, pi, fi, plan.di);
       if (!base) return;
@@ -430,7 +408,7 @@ function renderMsg() {
     msg += lines.join('\n') + '\n\n';
   });
 
-  if (sel.mt < 1) msg += `👥 *${turmaLabel}* — valor por aluno\n`;
+  if (mt < 1) msg += `👥 *${turmaLabel}* — valor por aluno\n`;
   msg += `🏠 Aula *${turmaLabel.toLowerCase()}* com Material Personalizado em Plataforma Exclusiva\n`;
   msg += `🆓 *GRÁTIS - Taxa de matrícula e de material = R$ 0,00*`;
   if (pkg === 'main') msg += `\n\n${promo.bonus}`;
@@ -439,37 +417,52 @@ function renderMsg() {
 }
 
 function copyMsg() {
-  if (sel.cupom === 'influencer' && !document.getElementById('cupom-input').value.trim()) {
+  if (state.cupom === 'influencer' && !document.getElementById('cupom-input').value.trim()) {
     document.getElementById('cupom-aviso').style.display = 'block';
     document.getElementById('cupom-input').focus();
     return;
   }
-  document.getElementById('cupom-aviso').style.display = 'none';
-  navigator.clipboard.writeText(document.getElementById('msg-preview').textContent).then(() => {
-    const el = document.getElementById('copied-msg');
-    el.style.opacity = '1';
-    setTimeout(() => el.style.opacity = '0', 2500);
-  });
+  const txt = document.getElementById('msg-preview').textContent;
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(txt).then(showCopied).catch(() => fallbackCopy(txt));
+  } else {
+    fallbackCopy(txt);
+  }
 }
 
-// ADMIN
+function fallbackCopy(txt) {
+  const ta = document.createElement('textarea');
+  ta.value = txt;
+  ta.style.cssText = 'position:fixed;top:0;left:0;opacity:0;';
+  document.body.appendChild(ta);
+  ta.focus(); ta.select();
+  try { document.execCommand('copy'); showCopied(); } catch(e) { alert('Não foi possível copiar. Por favor copie manualmente.'); }
+  document.body.removeChild(ta);
+}
+
+function showCopied() {
+  const el = document.getElementById('copied-msg');
+  el.style.opacity = '1';
+  setTimeout(() => el.style.opacity = '0', 2500);
+}
+
+// ── ADMIN ─────────────────────────────────────────────────
 function isMirrorTarget(ii, pi) { return MIRRORS.some(m => m.to[0]===ii && m.to[1]===pi); }
 
 function buildPromoFields() {
-  const container = document.getElementById('promo-fields');
+  const c = document.getElementById('promo-fields');
   MESES.forEach((mes, i) => {
     const row = document.createElement('div');
     row.style.marginBottom = '1rem';
     row.innerHTML = `<div style="font-size:11px;font-weight:700;color:#1a3a7a;margin-bottom:5px;text-transform:uppercase">${mes}</div>`;
-    const r1 = document.createElement('div'); r1.className = 'promo-row';
-    r1.innerHTML = `<label>Título</label>`;
-    const ta1 = document.createElement('textarea'); ta1.id = `promo-titulo-${i}`; ta1.value = PROMO_DATA[i].titulo;
-    r1.appendChild(ta1); row.appendChild(r1);
-    const r2 = document.createElement('div'); r2.className = 'promo-row';
-    r2.innerHTML = `<label>Bônus</label>`;
-    const ta2 = document.createElement('textarea'); ta2.id = `promo-bonus-${i}`; ta2.value = PROMO_DATA[i].bonus;
-    r2.appendChild(ta2); row.appendChild(r2);
-    container.appendChild(row);
+    ['titulo','bonus'].forEach(tipo => {
+      const r = document.createElement('div'); r.className = 'promo-row';
+      r.innerHTML = `<label>${tipo === 'titulo' ? 'Título' : 'Bônus'}</label>`;
+      const ta = document.createElement('textarea');
+      ta.id = `promo-${tipo}-${i}`; ta.value = PROMO_DATA[i][tipo];
+      r.appendChild(ta); row.appendChild(r);
+    });
+    c.appendChild(row);
   });
 }
 
@@ -483,10 +476,11 @@ function buildAdmin() {
     htd.textContent = '▾ ' + idioma.label;
     htd.addEventListener('click', () => {
       const open = htd.textContent.startsWith('▾');
-      htd.textContent = (open?'▸ ':'▾ ') + idioma.label;
+      htd.textContent = (open ? '▸ ' : '▾ ') + idioma.label;
       tbody.querySelectorAll(`.gr-${ii}`).forEach(r => r.classList.toggle('collapsed', open));
     });
     hrow.appendChild(htd); tbody.appendChild(hrow);
+
     idioma.pacotes.forEach((pacote, pi) => {
       FREQS.forEach((freq, fi) => {
         const row = document.createElement('tr'); row.className = `gr-${ii}`;
@@ -498,66 +492,68 @@ function buildAdmin() {
         const ftd = document.createElement('td'); ftd.className = 'sub'; ftd.textContent = freq+'x'; row.appendChild(ftd);
         DURACOES.forEach((_, di) => {
           const key = `${ii}-${pi}-${fi}-${di}`;
-          const pre = PRICES[key]||0;
-          const mirror = isMirrorTarget(ii,pi);
+          const pre = PRICES[key] || 0;
+          const mirror = isMirrorTarget(ii, pi);
           const realTd = document.createElement('td');
           const inp = document.createElement('input');
-          inp.type='number'; inp.placeholder='0'; inp.id='adm-'+key;
-          inp.className='val'+(mirror?' mirrored':'');
-          if (pre) inp.value=pre;
+          inp.type = 'number'; inp.placeholder = '0'; inp.id = 'adm-' + key;
+          inp.className = 'val' + (mirror ? ' mirrored' : '');
+          if (pre) inp.value = pre;
           inp.addEventListener('input', () => {
-            const v=parseFloat(inp.value)||0;
-            document.getElementById('ar-'+key).textContent=v?'R$'+Math.round(v*1.3):'—';
+            const v = parseFloat(inp.value) || 0;
+            document.getElementById('ar-' + key).textContent = v ? 'R$' + Math.round(v * 1.3) : '—';
             MIRRORS.forEach(m => {
-              if(m.from[0]===ii&&m.from[1]===pi){
-                const tk=`${m.to[0]}-${m.to[1]}-${fi}-${di}`;
-                const ti=document.getElementById('adm-'+tk);
-                if(ti){ti.value=inp.value; document.getElementById('ar-'+tk).textContent=v?'R$'+Math.round(v*1.3):'—';}
+              if (m.from[0]===ii && m.from[1]===pi) {
+                const tk = `${m.to[0]}-${m.to[1]}-${fi}-${di}`;
+                const ti = document.getElementById('adm-' + tk);
+                if (ti) { ti.value = inp.value; document.getElementById('ar-' + tk).textContent = v ? 'R$' + Math.round(v * 1.3) : '—'; }
               }
             });
           });
-          const al=document.createElement('span'); al.className='al'; al.textContent=AULAS_PACOTE[fi][di]+' aulas';
+          const al = document.createElement('span'); al.className = 'al'; al.textContent = AULAS_PACOTE[fi][di] + ' aulas';
           realTd.appendChild(inp); realTd.appendChild(al); row.appendChild(realTd);
-          const rTd=document.createElement('td'); rTd.className='risc'; rTd.id='ar-'+key;
-          rTd.textContent=pre?'R$'+Math.round(pre*1.3):'—'; row.appendChild(rTd);
+          const rTd = document.createElement('td'); rTd.className = 'risc'; rTd.id = 'ar-' + key;
+          rTd.textContent = pre ? 'R$' + Math.round(pre * 1.3) : '—'; row.appendChild(rTd);
         });
         tbody.appendChild(row);
       });
     });
   });
+  // mirrors on load
   MIRRORS.forEach(m => {
-    FREQS.forEach((_,fi) => { DURACOES.forEach((_,di) => {
-      const fk=`${m.from[0]}-${m.from[1]}-${fi}-${di}`, tk=`${m.to[0]}-${m.to[1]}-${fi}-${di}`;
-      const fi2=document.getElementById('adm-'+fk), ti=document.getElementById('adm-'+tk);
-      if(fi2&&ti&&fi2.value&&!ti.value){ti.value=fi2.value; const v=parseFloat(fi2.value)||0; document.getElementById('ar-'+tk).textContent=v?'R$'+Math.round(v*1.3):'—';}
-    });});
+    FREQS.forEach((_, fi) => { DURACOES.forEach((_, di) => {
+      const fk = `${m.from[0]}-${m.from[1]}-${fi}-${di}`, tk = `${m.to[0]}-${m.to[1]}-${fi}-${di}`;
+      const fe = document.getElementById('adm-' + fk), te = document.getElementById('adm-' + tk);
+      if (fe && te && fe.value && !te.value) { te.value = fe.value; const v = parseFloat(fe.value)||0; document.getElementById('ar-'+tk).textContent = v ? 'R$'+Math.round(v*1.3) : '—'; }
+    }); });
   });
 }
 
 function saveAdmin() {
-  IDIOMAS.forEach((_,ii)=>{_.pacotes.forEach((_,pi)=>{FREQS.forEach((_,fi)=>{DURACOES.forEach((_,di)=>{
-    const key=`${ii}-${pi}-${fi}-${di}`;
-    const inp=document.getElementById('adm-'+key);
-    if(inp) PRICES[key]=parseFloat(inp.value)||0;
-  });});});});
-  MESES.forEach((_,i)=>{
-    const t=document.getElementById(`promo-titulo-${i}`);
-    const b=document.getElementById(`promo-bonus-${i}`);
-    if(t) PROMO_DATA[i].titulo=t.value;
-    if(b) PROMO_DATA[i].bonus=b.value;
+  IDIOMAS.forEach((_, ii) => { _.pacotes.forEach((_, pi) => { FREQS.forEach((_, fi) => { DURACOES.forEach((_, di) => {
+    const key = `${ii}-${pi}-${fi}-${di}`;
+    const inp = document.getElementById('adm-' + key);
+    if (inp) PRICES[key] = parseFloat(inp.value) || 0;
+  }); }); }); });
+  MESES.forEach((_, i) => {
+    ['titulo','bonus'].forEach(tipo => {
+      const el = document.getElementById(`promo-${tipo}-${i}`);
+      if (el) PROMO_DATA[i][tipo] = el.value;
+    });
   });
   render();
-  const ok=document.getElementById('save-ok');
-  ok.style.opacity='1'; setTimeout(()=>ok.style.opacity='0',2500);
+  const ok = document.getElementById('save-ok');
+  ok.style.opacity = '1'; setTimeout(() => ok.style.opacity = '0', 2500);
 }
 
 function switchTab(tab, btn) {
-  document.querySelectorAll('.tab-content').forEach(t=>t.classList.remove('active'));
-  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
-  document.getElementById('tab-'+tab).classList.add('active');
+  document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('tab-' + tab).classList.add('active');
   btn.classList.add('active');
 }
 
+// ── INIT ──────────────────────────────────────────────────
 buildPromoFields();
 buildAdmin();
 render();
