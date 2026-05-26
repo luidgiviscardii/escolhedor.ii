@@ -45,7 +45,7 @@ body { font-family: 'Segoe UI', Arial, sans-serif; background: #eef2f8; min-heig
 #cupom-input:focus { border-color: #1a3a7a; }
 #cupom-aviso { display: none; color: #cc2222; font-size: 0.75rem; font-weight: 600; margin-top: 5px; }
 
-.msg-preview { background: #f5f8ff; border-radius: 9px; padding: 1rem; font-size: 0.8rem; color: #1a3a7a; white-space: pre-wrap; line-height: 1.65; border: 1.5px solid #d0d8e8; max-height: 400px; overflow-y: auto; }
+.msg-preview { background: #f5f8ff; border-radius: 9px; padding: 1rem; font-size: 0.8rem; color: #1a3a7a; white-space: pre-wrap; line-height: 1.65; border: 1.5px solid #d0d8e8; max-height: 420px; overflow-y: auto; }
 .copy-btn { margin-top: 0.75rem; width: 100%; padding: 13px; background: #25D366; color: #fff; border: none; border-radius: 9px; font-size: 1rem; font-weight: 700; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; }
 .copy-btn:hover { opacity: 0.88; }
 .copied { text-align: center; font-size: 0.78rem; color: #25D366; font-weight: 600; margin-top: 6px; opacity: 0; transition: opacity 0.3s; }
@@ -86,18 +86,18 @@ tr.collapsed { display: none; }
 .promo-row label { font-size: 11px; font-weight: 600; color: #5a6a8a; padding-top: 6px; }
 .promo-row textarea { width: 100%; padding: 6px 9px; border: 1.5px solid #d0d8e8; border-radius: 7px; font-size: 11px; color: #1a3a7a; resize: vertical; min-height: 48px; font-family: inherit; }
 .promo-row textarea:focus { border-color: #1a3a7a; outline: none; }
+
+/* Admin access */
+.admin-access { text-align: right; padding: 4px 12px; background: #1a3a7a; }
+.admin-access a { font-size: 11px; color: rgba(255,255,255,0.3); text-decoration: none; cursor: pointer; }
+.admin-access a:hover { color: rgba(255,255,255,0.7); }
 </style>
 </head>
 <body>
 
-<div class="tabs">
-  <button class="tab-btn active" onclick="switchTab('escolhedor',this)">🎯 Escolhedor</button>
-  <button class="tab-btn" onclick="switchTab('admin',this)">⚙️ Admin</button>
-</div>
+<div class="admin-access"><a onclick="toggleAdmin()">⚙️ admin</a></div>
 
-<!-- ESCOLHEDOR -->
 <div id="tab-escolhedor" class="tab-content active">
-
   <div class="col-left">
     <div class="logo">
       <h1>Idioma <span>Independente</span></h1>
@@ -114,16 +114,20 @@ tr.collapsed { display: none; }
     <div class="card">
       <div class="section-title">Idioma</div>
       <div class="toggle-group" id="idioma-group">
-        <button class="toggle-btn active" data-val="0">Inglês / Espanhol</button>
-        <button class="toggle-btn" data-val="1">Francês</button>
-        <button class="toggle-btn" data-val="2">Italiano / Alemão / Outros</button>
+        <button class="toggle-btn active" data-ii="0" data-emoji="🇺🇸🇬🇧" data-label="Inglês">🇺🇸 Inglês</button>
+        <button class="toggle-btn" data-ii="0" data-emoji="🇪🇸🇲🇽" data-label="Espanhol">🇪🇸 Espanhol</button>
+        <button class="toggle-btn" data-ii="1" data-emoji="🇫🇷" data-label="Francês">🇫🇷 Francês</button>
+        <button class="toggle-btn" data-ii="2" data-emoji="🇩🇪" data-label="Alemão">🇩🇪 Alemão</button>
+        <button class="toggle-btn" data-ii="2" data-emoji="🇮🇹" data-label="Italiano">🇮🇹 Italiano</button>
+        <button class="toggle-btn" data-ii="2" data-emoji="🌍" data-label="Outro idioma">🌍 Outros</button>
       </div>
       <hr class="divider">
       <div class="section-title">Tipo de curso</div>
       <div class="toggle-group" id="tipo-group">
-        <button class="toggle-btn active" data-val="0">Normal</button>
-        <button class="toggle-btn" data-val="1">Business / Kids & Teens</button>
-        <button class="toggle-btn red" data-val="2" id="btn-prof">Prova de Proficiência</button>
+        <button class="toggle-btn active" data-pi="0" data-emoji="📚" data-label="Normal">📚 Normal</button>
+        <button class="toggle-btn" data-pi="1" data-emoji="💼" data-label="Business">💼 Business</button>
+        <button class="toggle-btn" data-pi="1" data-emoji="👦" data-label="Kids & Teens">👦 Kids & Teens</button>
+        <button class="toggle-btn red" data-pi="2" data-emoji="🎓" data-label="Prova de Proficiência" id="btn-prof">🎓 Prova de Proficiência</button>
       </div>
       <hr class="divider">
       <div class="section-title">Turma</div>
@@ -175,10 +179,9 @@ tr.collapsed { display: none; }
       <div id="result-plans"></div>
     </div>
   </div>
-
 </div>
 
-<!-- ADMIN -->
+<!-- ADMIN (oculto) -->
 <div id="tab-admin" class="tab-content">
   <div class="admin-content">
     <button class="save-btn" onclick="saveAdmin()">💾 Salvar alterações</button>
@@ -212,7 +215,6 @@ tr.collapsed { display: none; }
 </div>
 
 <script>
-// ── PROMO DATA ────────────────────────────────────────────
 const MESES = ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'];
 const PROMO_DATA = [
   { titulo:'Promoção de Início de Ano - Condições especiais válidas até 30/01!', bonus:'*BÔNUS DE JANEIRO*: Planilha SMART automatizada para você mensurar seu progresso no idioma' },
@@ -229,7 +231,6 @@ const PROMO_DATA = [
   { titulo:'Promoção de Dezembro - Condições especiais válidas até 31/12!', bonus:'*BÔNUS DE DEZEMBRO*: Em breve!' },
 ];
 
-// ── ESTRUTURA ─────────────────────────────────────────────
 const DURACOES = [
   { label:'6 meses', parc:6  },
   { label:'1 ano',   parc:12 },
@@ -243,10 +244,10 @@ const AULAS_PACOTE = [
   [72,  144, 288, 432],
 ];
 const PLAN_META = [
-  { label:'6 Meses',  sublabel:'Somente para Alunos Avançados',      di:0, parc:6,  warn:true },
-  { label:'1 Ano',    sublabel:'Para Destravar o Segundo Idioma',     di:1, parc:12 },
-  { label:'2 Anos',   sublabel:'Do Seu Nível à Fluência',             di:2, parc:24, best:true },
-  { label:'3 Anos',   sublabel:'Do Básico à Fluência + Práticas',     di:3, parc:36 },
+  { label:'6 Meses',  sublabel:'Somente para Alunos Avançados',   di:0, parc:6,  warn:true },
+  { label:'1 Ano',    sublabel:'Para Destravar o Segundo Idioma',  di:1, parc:12 },
+  { label:'2 Anos',   sublabel:'Do Seu Nível à Fluência',          di:2, parc:24, best:true },
+  { label:'3 Anos',   sublabel:'Do Básico à Fluência + Práticas',  di:3, parc:36 },
 ];
 const IDIOMAS = [
   { label:'Inglês / Espanhol', pacotes:[ {label:'Normal'}, {label:'Business / Kids & Teens'}, {label:'Prova de Proficiência'} ] },
@@ -254,18 +255,10 @@ const IDIOMAS = [
   { label:'Italiano / Alemão / Outros', pacotes:[ {label:'Normal'}, {label:'Business / Kids & Teens\n+ Avançado'} ] },
 ];
 const MIRRORS = [{ from:[0,1], to:[1,0] }, { from:[1,1], to:[2,0] }];
-const TURMAS = [
-  { label:'Particular', mt:1    },
-  { label:'Dupla',      mt:0.75 },
-  { label:'Trio',       mt:0.66 },
-  { label:'Quarteto',   mt:0.56 },
-  { label:'Cinco+',     mt:0.5  },
-];
 
-// ── PREÇOS ────────────────────────────────────────────────
 let PRICES = {
-  '0-0-0-0':297, '0-0-0-1':257, '0-0-0-2':227,   '0-0-0-3':207,
-  '0-0-1-0':517, '0-0-1-1':467, '0-0-1-2':427,   '0-0-1-3':417,
+  '0-0-0-0':297, '0-0-0-1':257, '0-0-0-2':227, '0-0-0-3':207,
+  '0-0-1-0':517, '0-0-1-1':467, '0-0-1-2':427, '0-0-1-3':417,
   '0-0-2-0':720, '0-0-2-1':697, '0-0-2-2':597, '0-0-2-3':577,
   '0-1-0-0':317, '0-1-0-1':297, '0-1-0-2':257, '0-1-0-3':244,
   '0-1-1-0':617, '0-1-1-1':597, '0-1-1-2':577, '0-1-1-3':517,
@@ -287,10 +280,13 @@ let PRICES = {
   '2-1-2-0':0,   '2-1-2-1':0,   '2-1-2-2':0,   '2-1-2-3':0,
 };
 
-// ── ESTADO ────────────────────────────────────────────────
-const state = { ii:0, pi:0, mt:1, turmaLabel:'Particular', pkg:'main', fq:'12', cupom:'influencer' };
+const state = {
+  ii: 0, pi: 0, mt: 1, turmaLabel: 'Particular',
+  pkg: 'main', fq: '12', cupom: 'influencer',
+  idiomaEmoji: '🇺🇸🇬🇧', idiomaLabel: 'Inglês',
+  tipoEmoji: '📚', tipoLabel: 'Normal'
+};
 
-// ── HELPERS ───────────────────────────────────────────────
 function smartRound(val) {
   if (val <= 0) return 0;
   const r = Math.round(val), d = r % 10;
@@ -303,7 +299,6 @@ function getPrice(ii, pi, fi, di) { return PRICES[`${ii}-${pi}-${fi}-${di}`] || 
 function applyTurma(base) { return state.mt === 1 ? base : smartRound(base * state.mt); }
 function getFreqs() { return state.fq === '12' ? [0,1] : [0,1,2]; }
 
-// ── TOGGLES ───────────────────────────────────────────────
 function setupToggle(groupId, onChange) {
   document.querySelectorAll(`#${groupId} .toggle-btn`).forEach(btn => {
     btn.addEventListener('click', () => {
@@ -316,14 +311,21 @@ function setupToggle(groupId, onChange) {
 }
 
 setupToggle('idioma-group', btn => {
-  state.ii = parseInt(btn.dataset.val);
+  state.ii = parseInt(btn.dataset.ii);
+  state.idiomaEmoji = btn.dataset.emoji;
+  state.idiomaLabel = btn.dataset.label;
+  // Francês/Italiano não têm Proficiência separada
   const profBtn = document.getElementById('btn-prof');
-  if (state.ii !== 0) { profBtn.textContent = 'Avançado / Especialização'; profBtn.classList.remove('red'); }
-  else { profBtn.textContent = 'Prova de Proficiência'; profBtn.classList.add('red'); }
+  if (state.ii !== 0) { profBtn.textContent = '🎓 Avançado / Especialização'; profBtn.classList.remove('red'); }
+  else { profBtn.textContent = '🎓 Prova de Proficiência'; profBtn.classList.add('red'); }
 });
-setupToggle('tipo-group',    btn => { state.pi = parseInt(btn.dataset.val); });
-setupToggle('turma-group',   btn => { state.mt = parseFloat(btn.dataset.mt); state.turmaLabel = btn.dataset.label; });
-setupToggle('cupom-group',   btn => {
+setupToggle('tipo-group', btn => {
+  state.pi = parseInt(btn.dataset.pi);
+  state.tipoEmoji = btn.dataset.emoji;
+  state.tipoLabel = btn.dataset.label;
+});
+setupToggle('turma-group', btn => { state.mt = parseFloat(btn.dataset.mt); state.turmaLabel = btn.dataset.label; });
+setupToggle('cupom-group', btn => {
   state.cupom = btn.dataset.val;
   document.getElementById('cupom-input-wrap').style.display = state.cupom === 'influencer' ? 'block' : 'none';
   document.getElementById('cupom-aviso').style.display = 'none';
@@ -336,11 +338,7 @@ document.getElementById('cupom-input').addEventListener('input', () => {
   render();
 });
 
-// ── RENDER ────────────────────────────────────────────────
-function render() {
-  renderPreview();
-  renderMsg();
-}
+function render() { renderPreview(); renderMsg(); }
 
 function renderPreview() {
   const freqs = getFreqs();
@@ -368,23 +366,21 @@ function renderPreview() {
 }
 
 function renderMsg() {
-  const { ii, pi, mt, turmaLabel, pkg, cupom } = state;
+  const { ii, pi, mt, turmaLabel, pkg, cupom, idiomaEmoji, idiomaLabel, tipoEmoji, tipoLabel } = state;
   const freqs = getFreqs();
   const promo = PROMO_DATA[new Date().getMonth()];
-  const idiomaLabel = IDIOMAS[ii].label;
-  const pacoteLabel = IDIOMAS[ii].pacotes[pi]?.label.replace(/\n/g,' ') || '';
   const plans = pkg === 'main' ? PLAN_META.filter(p => !p.warn) : PLAN_META.filter(p => p.warn);
   const semDesconto = cupom === 'sem_desconto';
-  const cupomVal = cupom === 'influencer'
-    ? (document.getElementById('cupom-input').value.trim() || '')
-    : 'INDICAÇÃO';
+  const cupomVal = cupom === 'influencer' ? (document.getElementById('cupom-input').value.trim() || '') : 'INDICAÇÃO';
 
   let msg = '';
   if (pkg === 'main') msg += `${promo.titulo}\n\n`;
-  msg += `*Curso de ${idiomaLabel}*`;
-  if (pi > 0) msg += ` — _${pacoteLabel}_`;
+
+  msg += `${idiomaEmoji} *Curso de ${idiomaLabel}*`;
+  if (pi > 0) msg += ` ${tipoEmoji} _${tipoLabel}_`;
   if (mt < 1) msg += ` — _${turmaLabel} (valor por aluno)_`;
   msg += '\n\n';
+
   msg += `🗒️ *Pague em até 15 dias após o início*, sem custo de matrícula, via *boleto* 😌\n`;
   if (!semDesconto) msg += `🎟️ Cupom *${cupomVal || 'INFLUENCER'}* aplicado\n`;
   msg += '\n';
@@ -425,35 +421,33 @@ function copyMsg() {
   const txt = document.getElementById('msg-preview').textContent;
   if (navigator.clipboard && navigator.clipboard.writeText) {
     navigator.clipboard.writeText(txt).then(showCopied).catch(() => fallbackCopy(txt));
-  } else {
-    fallbackCopy(txt);
-  }
+  } else { fallbackCopy(txt); }
 }
-
 function fallbackCopy(txt) {
   const ta = document.createElement('textarea');
-  ta.value = txt;
-  ta.style.cssText = 'position:fixed;top:0;left:0;opacity:0;';
-  document.body.appendChild(ta);
-  ta.focus(); ta.select();
+  ta.value = txt; ta.style.cssText = 'position:fixed;top:0;left:0;opacity:0;';
+  document.body.appendChild(ta); ta.focus(); ta.select();
   try { document.execCommand('copy'); showCopied(); } catch(e) { alert('Não foi possível copiar. Por favor copie manualmente.'); }
   document.body.removeChild(ta);
 }
-
 function showCopied() {
   const el = document.getElementById('copied-msg');
-  el.style.opacity = '1';
-  setTimeout(() => el.style.opacity = '0', 2500);
+  el.style.opacity = '1'; setTimeout(() => el.style.opacity = '0', 2500);
 }
 
-// ── ADMIN ─────────────────────────────────────────────────
+// ADMIN toggle
+let adminVisible = false;
+function toggleAdmin() {
+  adminVisible = !adminVisible;
+  document.getElementById('tab-admin').style.display = adminVisible ? 'block' : 'none';
+}
+
 function isMirrorTarget(ii, pi) { return MIRRORS.some(m => m.to[0]===ii && m.to[1]===pi); }
 
 function buildPromoFields() {
   const c = document.getElementById('promo-fields');
   MESES.forEach((mes, i) => {
-    const row = document.createElement('div');
-    row.style.marginBottom = '1rem';
+    const row = document.createElement('div'); row.style.marginBottom = '1rem';
     row.innerHTML = `<div style="font-size:11px;font-weight:700;color:#1a3a7a;margin-bottom:5px;text-transform:uppercase">${mes}</div>`;
     ['titulo','bonus'].forEach(tipo => {
       const r = document.createElement('div'); r.className = 'promo-row';
@@ -480,7 +474,6 @@ function buildAdmin() {
       tbody.querySelectorAll(`.gr-${ii}`).forEach(r => r.classList.toggle('collapsed', open));
     });
     hrow.appendChild(htd); tbody.appendChild(hrow);
-
     idioma.pacotes.forEach((pacote, pi) => {
       FREQS.forEach((freq, fi) => {
         const row = document.createElement('tr'); row.className = `gr-${ii}`;
@@ -519,7 +512,6 @@ function buildAdmin() {
       });
     });
   });
-  // mirrors on load
   MIRRORS.forEach(m => {
     FREQS.forEach((_, fi) => { DURACOES.forEach((_, di) => {
       const fk = `${m.from[0]}-${m.from[1]}-${fi}-${di}`, tk = `${m.to[0]}-${m.to[1]}-${fi}-${di}`;
@@ -546,14 +538,6 @@ function saveAdmin() {
   ok.style.opacity = '1'; setTimeout(() => ok.style.opacity = '0', 2500);
 }
 
-function switchTab(tab, btn) {
-  document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
-  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-  document.getElementById('tab-' + tab).classList.add('active');
-  btn.classList.add('active');
-}
-
-// ── INIT ──────────────────────────────────────────────────
 buildPromoFields();
 buildAdmin();
 render();
