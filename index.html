@@ -150,6 +150,12 @@ tr.collapsed { display: none; }
         <div id="cupom-aviso">⚠️ INSIRA O CUPOM DO INFLUENCER</div>
       </div>
       <hr class="divider">
+      <div class="section-title">Horário</div>
+      <div class="toggle-group" id="horario-group">
+        <button class="toggle-btn active" data-val="0">🕐 Horários Comuns<br><small style="font-size:0.68rem;font-weight:400">9h – 17h</small></button>
+        <button class="toggle-btn" data-val="20">⭐ Prime Time<br><small style="font-size:0.68rem;font-weight:400">7h/8h, 18h–22h e Fim de Semana</small></button>
+      </div>
+      <hr class="divider">
       <div class="section-title">Pacotes a exibir</div>
       <div class="toggle-group" id="pacotes-group">
         <button class="toggle-btn active" data-val="main">1, 2 e 3 anos</button>
@@ -257,7 +263,7 @@ const IDIOMAS = [
 const MIRRORS = [{ from:[0,1], to:[1,0] }, { from:[1,1], to:[2,0] }];
 
 let PRICES = {
-  '0-0-0-0':297, '0-0-0-1':257, '0-0-0-2':227, '0-0-0-3':207,
+  '0-0-0-0':297,   '0-0-0-1':267, '0-0-0-2':227,   '0-0-0-3':212,
   '0-0-1-0':517, '0-0-1-1':467, '0-0-1-2':427, '0-0-1-3':417,
   '0-0-2-0':720, '0-0-2-1':697, '0-0-2-2':597, '0-0-2-3':577,
   '0-1-0-0':317, '0-1-0-1':297, '0-1-0-2':257, '0-1-0-3':244,
@@ -284,7 +290,8 @@ const state = {
   ii: 0, pi: 0, mt: 1, turmaLabel: 'Particular',
   pkg: 'main', fq: '12', cupom: 'influencer',
   idiomaEmoji: '🇺🇸🇬🇧', idiomaLabel: 'Inglês',
-  tipoEmoji: '📚', tipoLabel: 'Normal'
+  tipoEmoji: '📚', tipoLabel: 'Normal',
+  horario: 0
 };
 
 function smartRound(val) {
@@ -296,7 +303,10 @@ function smartRound(val) {
 }
 function fmtBRL(v) { return 'R$ ' + v.toLocaleString('pt-BR'); }
 function getPrice(ii, pi, fi, di) { return PRICES[`${ii}-${pi}-${fi}-${di}`] || 0; }
-function applyTurma(base) { return state.mt === 1 ? base : smartRound(base * state.mt); }
+function applyTurma(base) {
+  const v = state.mt === 1 ? base : smartRound(base * state.mt);
+  return v + state.horario;
+}
 function getFreqs() { return state.fq === '12' ? [0,1] : [0,1,2]; }
 
 function setupToggle(groupId, onChange) {
@@ -330,6 +340,7 @@ setupToggle('cupom-group', btn => {
   document.getElementById('cupom-input-wrap').style.display = state.cupom === 'influencer' ? 'block' : 'none';
   document.getElementById('cupom-aviso').style.display = 'none';
 });
+setupToggle('horario-group',  btn => { state.horario = parseInt(btn.dataset.val); });
 setupToggle('pacotes-group', btn => { state.pkg = btn.dataset.val; });
 setupToggle('freq-group',    btn => { state.fq  = btn.dataset.val; });
 
@@ -382,6 +393,7 @@ function renderMsg() {
   msg += '\n\n';
 
   msg += `🗒️ *Pague em até 15 dias após o início*, sem custo de matrícula, via *boleto* 😌\n`;
+  if (state.horario > 0) msg += `⭐ *Prime Time* — 7h/8h, 18h–22h e Fim de Semana\n`;
   if (!semDesconto) msg += `🎟️ Cupom *${cupomVal || 'INFLUENCER'}* aplicado\n`;
   msg += '\n';
 
